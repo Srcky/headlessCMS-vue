@@ -5,6 +5,9 @@
   "scss.validate": true,
   "editor.formatOnSave": true,
   "prettier.singleQuote": true,
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
