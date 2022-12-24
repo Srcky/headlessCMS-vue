@@ -1,3 +1,3 @@
-# sanity-vue
+# Strapi-Vue
 
-Sanity Headless CMS with Vue.js
+Strapi Headless CMS with Vue.js
