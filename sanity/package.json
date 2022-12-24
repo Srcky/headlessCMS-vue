@@ -5,7 +5,6 @@
   "description": "",
   "main": "package.json",
   "author": "Sergio Damiao",
-  "license": "UNLICENSED",
   "scripts": {
     "start": "sanity start",
     "build": "sanity build"
