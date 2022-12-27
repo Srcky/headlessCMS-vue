@@ -13,6 +13,7 @@
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+*.code-workspace
 
 # misc
 /.sass-cache
