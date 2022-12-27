@@ -8,11 +8,6 @@ const toggleNav = () => (showMobileMenu.value = !showMobileMenu.value);
 const closeNav = () => (showMobileMenu.value = false);
 const navigationItems = [
     {
-        title: 'Home',
-        iconClass: 'user-friends',
-        to: { name: 'home' },
-    },
-    {
         title: 'Alarmi',
         iconClass: 'comment',
         to: { name: 'alarmi' },
@@ -46,8 +41,8 @@ const navigationItems = [
 
 </script>
 <template>
-    <nav aria-label="Primary navigation">
-        <ul class="center-gap">
+    <nav class="hidden md:block" aria-label="Primary navigation">
+        <ul class="flex flex-wrap gap-x-8 justify-center">
             <template v-for="item in navigationItems" :key="item.title">
                 <li>
                     <router-link active-class="active" :aria-label="item.title" :to="item.to">

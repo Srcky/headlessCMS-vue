@@ -4,7 +4,6 @@ import Header from '@/components/common/TheHeader.vue';
 </script>
 
 <template>
-
   <Header></Header>
   <RouterView />
 </template>
@@ -61,7 +60,7 @@ input[type='password']:focus {
   box-shadow: none;
 }
 
-.center-gap {
-  @apply flex justify-center gap-x-8 flex-wrap;
+.padded-container {
+  @apply container px-4 m-auto;
 }
 </style>
