@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '@/components/TheWelcome.vue'
+import TheHomeLanding from '@/components/TheHomeLanding.vue'
 </script>
 
 <template>
   <main class="padded-container">
-    <TheWelcome />
+    <TheHomeLanding />
   </main>
 </template>
