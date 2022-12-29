@@ -1,12 +1,47 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
-import Navigation from './TheNavigation.vue'
+import { ref, computed } from 'vue';
+import type { WritableComputedRef, Ref } from 'vue';
+import { RouterLink } from 'vue-router';
+import Navigation from './TheNavigation.vue';
+
+const header = ref<HTMLElement | null>(null);
+const emit = defineEmits(['headerHeightChange']);
+// let debounceHeight = ref<Number | undefined>();
+// let heightTimeout = ref<any>();
+
+window.addEventListener('resize', () => {
+    emit('headerHeightChange', header.value?.clientHeight);
+});
+// window.addEventListener('resize', () => {
+//     emit('headerHeightChange', heightDebounce(undefined));
+// });
+
+// const heightDebounce = (newValue: Number | undefined) => {
+//     if (heightTimeout.value) clearTimeout(heightTimeout.value);
+//     heightTimeout.value = setTimeout(() => {
+//         console.log(debounceHeight.value);
+//         debounceHeight.value = newValue;
+//     }, 500);
+// };
+
+
+// 2nd way of passing props to a parent
+// const props = defineProps({
+//     headerHeightValue: {
+//         type: Function
+//     }
+// });
+// window.addEventListener('resize', () => {
+//     if (props.headerHeightValue) {
+//         props.headerHeightValue(header.value?.clientHeight);
+//     }
+// })
 
 </script>
 <template>
-    <header class="sticky md:top-0 bg-white">
-        <div class="header-nav padded-container flex flex-wrap py-5 justify-center lg:justify-between gap-4 ">
-            <RouterLink to="/">
+    <header class="sticky md:top-0 z-10 bg-white/80" ref="header">
+        <div class="header-nav md:container mx-auto flex flex-wrap justify-center lg:justify-between">
+            <RouterLink to="/" class="p-5">
                 <!-- <img alt="MB electronic logo" class="w-full cursor-pointer block max-w-[10rem]"
                     src="@/assets/mb-electronic-logo.svg" /> -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 783 129" fill="none"

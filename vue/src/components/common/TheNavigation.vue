@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { defineComponent } from '@vue/runtime-core';
-import { computed, ref } from 'vue';
+import { onMounted, computed, ref } from 'vue';
+import type { Ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const showMobileMenu = ref(false);
+
 const toggleNav = () => (showMobileMenu.value = !showMobileMenu.value);
 const closeNav = () => (showMobileMenu.value = false);
 const navigationItems = [
@@ -42,10 +44,12 @@ const navigationItems = [
 </script>
 <template>
     <nav class="hidden md:block" aria-label="Primary navigation">
-        <ul class="flex flex-wrap gap-x-8 justify-center">
+        <ul class="flex flex-wrap justify-center">
             <template v-for="item in navigationItems" :key="item.title">
                 <li>
-                    <router-link active-class="active" :aria-label="item.title" :to="item.to">
+                    <router-link
+                        class="block p-5 transition-colors ease-out delay-100 hover:bg-blue-500 hover:text-white"
+                        active-class="active" :aria-label="item.title" :to="item.to">
                         <!-- <fa-icon :icon="item.iconClass" class="text-2xl align-middle text-msg-red-500" /> -->
                         {{ item.title }}
                     </router-link>
