@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
-import type { WritableComputedRef, Ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import Navigation from './TheNavigation.vue';
 
@@ -9,18 +8,16 @@ const emit = defineEmits(['headerHeightChange']);
 let debounceHeight = ref<Number | undefined>();
 let heightTimeout = ref<any>();
 
-// window.addEventListener('resize', () => {
-//     emit('headerHeightChange', header.value?.clientHeight);
-// });
+onMounted(() => {
+    emit('headerHeightChange', header.value?.clientHeight);
+});
 
 window.addEventListener('resize', () => {
     if (debounceHeight.value === header.value?.clientHeight) return;
     if (heightTimeout.value) clearTimeout(heightTimeout.value);
     heightTimeout.value = setTimeout(() => {
-        console.log('fsdfsd');
-        debounceHeight.value = header.value?.clientHeight;
         emit('headerHeightChange', header.value?.clientHeight);
-    }, 500);
+    }, 250);
 });
 
 // 2nd way of passing props to a parent
@@ -37,9 +34,9 @@ window.addEventListener('resize', () => {
 
 </script>
 <template>
-    <header class="sticky md:top-0 z-10 bg-white/80" ref="header">
+    <header class="sticky top-0 z-10 bg-white/80" ref="header">
         <div class="header-nav md:container mx-auto flex flex-wrap justify-center lg:justify-between">
-            <RouterLink to="/" class="p-5">
+            <RouterLink to="/" class="p-5 md:pb-0" aria-label="MB electronic homepage">
                 <!-- <img alt="MB electronic logo" class="w-full cursor-pointer block max-w-[10rem]"
                     src="@/assets/mb-electronic-logo.svg" /> -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 783 129" fill="none"
