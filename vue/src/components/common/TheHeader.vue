@@ -1,29 +1,27 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import type { WritableComputedRef, Ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import Navigation from './TheNavigation.vue';
 
 const header = ref<HTMLElement | null>(null);
 const emit = defineEmits(['headerHeightChange']);
-// let debounceHeight = ref<Number | undefined>();
-// let heightTimeout = ref<any>();
+let debounceHeight = ref<Number | undefined>();
+let heightTimeout = ref<any>();
 
-window.addEventListener('resize', () => {
-    emit('headerHeightChange', header.value?.clientHeight);
-});
 // window.addEventListener('resize', () => {
-//     emit('headerHeightChange', heightDebounce(undefined));
+//     emit('headerHeightChange', header.value?.clientHeight);
 // });
 
-// const heightDebounce = (newValue: Number | undefined) => {
-//     if (heightTimeout.value) clearTimeout(heightTimeout.value);
-//     heightTimeout.value = setTimeout(() => {
-//         console.log(debounceHeight.value);
-//         debounceHeight.value = newValue;
-//     }, 500);
-// };
-
+window.addEventListener('resize', () => {
+    if (debounceHeight.value === header.value?.clientHeight) return;
+    if (heightTimeout.value) clearTimeout(heightTimeout.value);
+    heightTimeout.value = setTimeout(() => {
+        console.log('fsdfsd');
+        debounceHeight.value = header.value?.clientHeight;
+        emit('headerHeightChange', header.value?.clientHeight);
+    }, 500);
+});
 
 // 2nd way of passing props to a parent
 // const props = defineProps({
