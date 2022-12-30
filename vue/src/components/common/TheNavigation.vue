@@ -48,7 +48,7 @@ const navigationItems = [
             <template v-for="item in navigationItems" :key="item.title">
                 <li>
                     <router-link
-                        class="block p-5 transition-colors ease-out delay-100 hover:bg-blue-500 hover:text-white"
+                        class="block relative p-5 text-white after:block after:absolute after:content-[''] after:bg-white after:w-0 after:h-[2px] after:transition-[width] after:ease-in-out after:delay-150 hover:after:w-[calc(100%-2.5rem)]"
                         active-class="active" :aria-label="item.title" :to="item.to">
                         <!-- <fa-icon :icon="item.iconClass" class="text-2xl align-middle text-msg-red-500" /> -->
                         {{ item.title }}

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
 import Header from '@/components/common/TheHeader.vue';
+import Footer from './components/common/TheFooter.vue';
 import { ref, provide } from 'vue';
 import type { Ref } from 'vue';
 
@@ -19,6 +20,7 @@ provide('headerHeightValue', headerHeight);
   <main>
     <RouterView />
   </main>
+  <Footer></Footer>
 </template>
 
 <style lang="scss">
@@ -34,7 +36,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
-  @apply text-gray-700;
 
   * {
     line-height: 1.6;
@@ -80,6 +81,6 @@ input[type='password']:focus {
 }
 
 .padded-container {
-  @apply container px-4 m-auto;
+  @apply px-5 m-auto max-w-7xl;
 }
 </style>

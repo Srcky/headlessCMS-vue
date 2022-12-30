@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import TheHeroBanner from './common/TheHeroBanner.vue'
-import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
-import ToolingIcon from './icons/IconTooling.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
-import CommunityIcon from './icons/IconCommunity.vue'
-import SupportIcon from './icons/IconSupport.vue'
-import LogoIcon from './icons/IconLogo.vue'
+import TheHeroBanner from './common/TheHeroBanner.vue';
+import WelcomeItem from './WelcomeItem.vue';
+import DocumentationIcon from './icons/IconDocumentation.vue';
+import ToolingIcon from './icons/IconTooling.vue';
+import EcosystemIcon from './icons/IconEcosystem.vue';
+import CommunityIcon from './icons/IconCommunity.vue';
+import SupportIcon from './icons/IconSupport.vue';
+import LogoIcon from './icons/IconLogo.vue';
 </script>
 
 <template>
+
   <TheHeroBanner></TheHeroBanner>
   <div class="padded-container">
     <WelcomeItem>
@@ -47,7 +48,7 @@ import LogoIcon from './icons/IconLogo.vue'
       a visit.
     </WelcomeItem>
 
-    <WelcomeItem>
+    <WelcomeItem class="my-10">
       <template #icon>
         <CommunityIcon />
       </template>
@@ -62,7 +63,7 @@ import LogoIcon from './icons/IconLogo.vue'
       twitter account for latest news in the Vue world.
     </WelcomeItem>
 
-    <WelcomeItem>
+    <WelcomeItem class="my-20">
       <template #icon>
         <SupportIcon />
       </template>
@@ -73,7 +74,7 @@ import LogoIcon from './icons/IconLogo.vue'
       <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
     </WelcomeItem>
 
-    <WelcomeItem>
+    <WelcomeItem class="my-10">
       <template #icon>
         <LogoIcon />
       </template>
@@ -83,7 +84,7 @@ import LogoIcon from './icons/IconLogo.vue'
       us by
       <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
     </WelcomeItem>
-    <WelcomeItem>
+    <WelcomeItem class="my-10">
       <template #icon>
         <LogoIcon />
       </template>
@@ -93,7 +94,7 @@ import LogoIcon from './icons/IconLogo.vue'
       us by
       <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
     </WelcomeItem>
-    <WelcomeItem>
+    <WelcomeItem class="my-10">
       <template #icon>
         <LogoIcon />
       </template>
@@ -103,7 +104,7 @@ import LogoIcon from './icons/IconLogo.vue'
       us by
       <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
     </WelcomeItem>
-    <WelcomeItem>
+    <WelcomeItem class="my-10">
       <template #icon>
         <LogoIcon />
       </template>
@@ -113,7 +114,7 @@ import LogoIcon from './icons/IconLogo.vue'
       us by
       <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
     </WelcomeItem>
-    <WelcomeItem>
+    <WelcomeItem class="my-10">
       <template #icon>
         <LogoIcon />
       </template>
@@ -123,7 +124,7 @@ import LogoIcon from './icons/IconLogo.vue'
       us by
       <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
     </WelcomeItem>
-    <WelcomeItem>
+    <WelcomeItem class="my-10">
       <template #icon>
         <LogoIcon />
       </template>
