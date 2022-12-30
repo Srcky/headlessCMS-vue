@@ -44,11 +44,11 @@ const navigationItems = [
 </script>
 <template>
     <nav class="hidden md:block" aria-label="Primary navigation">
-        <ul class="flex flex-wrap justify-center">
+        <ul class="flex flex-wrap justify-center gap-7">
             <template v-for="item in navigationItems" :key="item.title">
                 <li>
                     <router-link
-                        class="block relative p-5 text-white after:block after:absolute after:content-[''] after:bg-white after:w-0 after:h-[2px] after:transition-[width] after:ease-in-out after:delay-150 hover:after:w-[calc(100%-2.5rem)]"
+                        class="block relative text-white after:block after:absolute after:content-[''] after:bg-white after:w-0 after:h-[2px] after:transition-[width] after:ease-in-out after:delay-150 hover:after:w-full"
                         active-class="active" :aria-label="item.title" :to="item.to">
                         <!-- <fa-icon :icon="item.iconClass" class="text-2xl align-middle text-msg-red-500" /> -->
                         {{ item.title }}

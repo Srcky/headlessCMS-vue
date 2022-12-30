@@ -1,6 +1,6 @@
 <template>
-    <footer class="bg-white">
-        <div class="px-5 pt-16 mx-auto max-w-7xl">
+    <footer class="bg-white pt-16 ">
+        <div class="padded-container">
             <div class="flex flex-wrap items-start justify-between pb-20">
                 <a href="#_" class="flex items-center w-auto text-lg font-bold md:w-1/6">
                     <img src="@/assets/images/mb-electronic-logo.svg" alt="Company name">
