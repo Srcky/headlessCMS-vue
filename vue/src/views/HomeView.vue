@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import TheHomeLanding from '@/components/TheHomeLanding.vue'
+import HeroBanner from '@/components/common/TheHeroBanner.vue';
+import Features from '@/components/common/TheFeatures.vue';
 </script>
 
 <template>
-  <TheHomeLanding />
+  <HeroBanner></HeroBanner>
+  <Features></Features>
 </template>
+

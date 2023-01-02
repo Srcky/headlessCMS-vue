@@ -50,7 +50,6 @@ const navigationItems = [
                     <router-link
                         class="block relative text-white after:block after:absolute after:content-[''] after:bg-white after:w-0 after:h-[2px] after:transition-[width] after:ease-in-out after:delay-150 hover:after:w-full"
                         active-class="active" :aria-label="item.title" :to="item.to">
-                        <!-- <fa-icon :icon="item.iconClass" class="text-2xl align-middle text-msg-red-500" /> -->
                         {{ item.title }}
                     </router-link>
                 </li>
@@ -79,3 +78,8 @@ const navigationItems = [
         </div>
     </nav> -->
 </template>
+<style lang="scss" scoped>
+.active::after {
+    @apply w-full;
+}
+</style>

@@ -24,6 +24,8 @@ provide('headerHeightValue', headerHeight);
 </template>
 
 <style lang="scss">
+@import 'material-icons/iconfont/material-icons.css';
+
 html {
   /* sticky footer fix */
   position: relative;
@@ -36,6 +38,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+  @apply text-gray-600;
 
   * {
     line-height: 1.6;
@@ -69,6 +72,12 @@ nav {
   li ol {
     margin-top: 0;
   }
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
 }
 
 input[type='checkbox']:focus,

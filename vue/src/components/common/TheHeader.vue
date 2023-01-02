@@ -35,7 +35,7 @@ window.addEventListener('resize', () => {
 
 </script>
 <template>
-    <header class="sticky top-0 z-10 bg-blue-500/90" ref="header">
+    <header class="sticky top-0 z-50 bg-blue-500/90" ref="header">
         <div class="header-nav padded-container py-5 flex flex-wrap justify-center lg:justify-between gap-5">
             <RouterLink to="/" aria-label="MB electronic homepage">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 783 129" fill="none"

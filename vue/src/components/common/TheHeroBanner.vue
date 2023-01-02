@@ -11,7 +11,7 @@ const headerHeightValue: Ref<Record<string, Number>> | undefined = inject('heade
         <video loop muted autoplay class="absolute -z-20 object-cover w-full h-[100vh]">
             <source src="@/assets/videos/video.webm" type="video/webm">
             <source src="@/assets/videos/video.mp4" type="video/mp4">
-            I'm sorry, your browser doesn't support HTML video.
+            Sorry, your browser doesn't support HTML video.
         </video>
         <div class="hero-text padded-container text-white relative">
             <div class="max-w-[90%] md:max-w-[70%] px-8 xl:px-0">
