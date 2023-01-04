@@ -15,7 +15,3 @@ defineProps<{
     <p class="mt-2 text-sm leading-5">{{ text }}</p>
   </li>
 </template>
-
-<style lang="scss" scoped>
-
-</style>

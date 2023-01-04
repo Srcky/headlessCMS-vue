@@ -10,11 +10,11 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@splidejs/vue-splide": "^0.6.12",
     "material-icons": "^1.13.1",
     "pinia": "^2.0.16",
     "vue": "^3.2.37",
-    "vue-router": "^4.1.2",
-    "vue3-carousel": "^0.2.9"
+    "vue-router": "^4.1.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",

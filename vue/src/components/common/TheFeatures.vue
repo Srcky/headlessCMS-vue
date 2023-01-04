@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import FeatureItem from '@/components/FeatureItem.vue';
-import { ref } from 'vue';
 
-const featureItems = ref([
+const featureItems = [
     {
         image: 'src/assets/images/alarm-console.svg',
         heading: 'Alarmi i centrale',
@@ -28,7 +27,7 @@ const featureItems = ref([
         heading: 'Servis i ugradnja klima uredjaja',
         text: 'Create new plans with different features and intrigue your users to subscribe to any plan.'
     },
-]);
+];
 </script>
 <template>
     <section>

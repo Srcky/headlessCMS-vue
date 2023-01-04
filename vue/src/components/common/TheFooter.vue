@@ -1,12 +1,11 @@
 <template>
     <footer class="bg-white pt-40 bg-[url('@/assets/images/footer-background.svg')] bg-cover">
         <div class="padded-container">
-            <div class="flex flex-wrap items-start justify-between pb-20">
-                <a href="#_" class="flex items-center w-auto text-lg font-bold md:w-1/6">
+            <div class="flex flex-wrap items-start justify-between pb-20 pt-4">
+                <a href="#_" class="hidden md:flex items-center w-auto text-lg font-bold md:w-1/6">
                     <img src="@/assets/images/mb-electronic-logo.svg" alt="MB electronic logo" class="max-w-[10rem]">
                 </a>
-                <div
-                    class="grid w-full grid-cols-2 pt-2 mt-20 sm:grid-cols-4 gap-y-16 lg:gap-x-8 md:w-5/6 md:mt-0 md:pr-6">
+                <div class="grid w-full grid-cols-2 pt-2 sm:grid-cols-4 gap-y-16 lg:gap-x-8 md:w-5/6 md:pr-6">
                     <div class="md:justify-self-end text-white">
                         <h3 class="font-semibold">Product</h3>
                         <ul class="mt-6 space-y-4 text-sm">
