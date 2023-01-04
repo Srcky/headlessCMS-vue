@@ -19,7 +19,7 @@ const headerHeightValue: Ref<Record<string, Number>> | undefined = inject('heade
                 <p class="text-l md:text-xl py-10 font-light"> Duis aute irure dolor in reprehenderit in voluptate velit
                     esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
                     culpa qui officia deserunt mollit anim id est laborum.</p>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 p-8 rounded">Saznaj
+                <button class="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded w-[10rem]">Saznaj
                     više</button>
             </div>
         </div>

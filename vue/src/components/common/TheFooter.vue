@@ -3,7 +3,7 @@
         <div class="padded-container">
             <div class="flex flex-wrap items-start justify-between pb-20">
                 <a href="#_" class="flex items-center w-auto text-lg font-bold md:w-1/6">
-                    <img src="@/assets/images/mb-electronic-logo.svg" alt="MB electronic logo">
+                    <img src="@/assets/images/mb-electronic-logo.svg" alt="MB electronic logo" class="max-w-[10rem]">
                 </a>
                 <div
                     class="grid w-full grid-cols-2 pt-2 mt-20 sm:grid-cols-4 gap-y-16 lg:gap-x-8 md:w-5/6 md:mt-0 md:pr-6">

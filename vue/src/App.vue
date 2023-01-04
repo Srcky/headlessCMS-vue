@@ -26,6 +26,7 @@ provide('headerHeightValue', headerHeight);
 <style lang="scss">
 @import 'material-icons/iconfont/material-icons.css';
 
+
 html {
   /* sticky footer fix */
   position: relative;
@@ -38,6 +39,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+  background-color: white;
   @apply text-gray-600;
 
   * {
