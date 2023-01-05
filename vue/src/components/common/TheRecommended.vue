@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import RecommendedItem from '@/components/RecommendedItem.vue';
+import kasa from '@/assets/images/dp-25.webp';
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/vue-splide/css';
 
@@ -8,21 +9,21 @@ const recommendedItems = [
         heading: 'e-Fiskalizacija',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         buttonText: 'Saznaj više',
-        image: 'src/assets/images/dp-25.webp',
+        image: kasa,
         imageAlt: 'Fiskalna kasa dp-25'
     },
     {
         heading: 'Video nadzor',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         buttonText: 'Saznaj više',
-        image: 'src/assets/images/dp-25.webp',
+        image: kasa,
         imageAlt: 'Fiskalna kasa dp-25'
     },
     {
         heading: 'Racunari',
         text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         buttonText: 'Saznaj više',
-        image: 'src/assets/images/dp-25.webp',
+        image: kasa,
         imageAlt: 'Fiskalna kasa dp-25'
     },
 ];
