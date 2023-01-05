@@ -3,6 +3,7 @@
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts"],
   "exclude": ["node_modules", "**/test/*.ts"],
   "compilerOptions": {
+    "isolatedModules": false,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
