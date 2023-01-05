@@ -8,6 +8,7 @@ const emit = defineEmits(['headerHeightChange']);
 const header = ref<HTMLElement | null>(null);
 let debounceHeight = ref<Number | undefined>();
 let heightTimeout = ref<any>();
+const transparentBackground = ref<boolean>(true);
 
 onMounted(() => {
     emit('headerHeightChange', header.value?.clientHeight);
@@ -19,6 +20,14 @@ window.addEventListener('resize', () => {
     heightTimeout.value = setTimeout(() => {
         emit('headerHeightChange', header.value?.clientHeight);
     }, 250);
+});
+
+window.addEventListener('scroll', () => {
+    if (header.value && header.value?.offsetTop > 150) {
+        transparentBackground.value = false;
+    } else {
+        transparentBackground.value = true;
+    }
 });
 
 // 2nd way of passing props to a parent
@@ -35,7 +44,8 @@ window.addEventListener('resize', () => {
 
 </script>
 <template>
-    <header class="sticky top-0 z-50 bg-blue-500/90" ref="header">
+    <header class="sticky top-0 z-50 transition-[background-color] ease-in-out duration-300"
+        :class="{ 'bg-blue-500/90': !transparentBackground }" ref="header">
         <div class="header-nav padded-container py-5 flex flex-wrap justify-center lg:justify-between gap-5">
             <RouterLink to="/" aria-label="MB electronic homepage">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 783 129" fill="none" class="w-full max-w-[10rem]">
