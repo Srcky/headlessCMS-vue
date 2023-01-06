@@ -23,7 +23,7 @@ window.addEventListener('resize', () => {
 });
 
 window.addEventListener('scroll', () => {
-    if (header.value && header.value?.offsetTop > 150) {
+    if (header.value && header.value?.offsetTop > 120) {
         transparentBackground.value = false;
     } else {
         transparentBackground.value = true;
