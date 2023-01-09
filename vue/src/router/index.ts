@@ -5,7 +5,6 @@ import VideoNadzorView from '@/views/VideoNadzorView.vue';
 import FiskalneKaseView from '@/views/FiskalneKaseView.vue';
 import RacunariOpremaView from '@/views/RacunariOpremaView.vue';
 import OnamaView from '@/views/OnamaView.vue';
-import KontaktView from '@/views/KontaktView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,11 +38,6 @@ const router = createRouter({
       path: '/o-nama',
       name: 'oNama',
       component: OnamaView,
-    },
-    {
-      path: '/kontakt',
-      name: 'kontakt',
-      component: KontaktView,
     },
   ],
 });

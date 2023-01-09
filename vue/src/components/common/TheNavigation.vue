@@ -34,11 +34,6 @@ const navigationItems = [
         iconClass: 'comments',
         to: { name: 'oNama' },
     },
-    {
-        title: 'Kontakt',
-        iconClass: 'comments',
-        to: { name: 'kontakt' },
-    },
 ];
 
 </script>
