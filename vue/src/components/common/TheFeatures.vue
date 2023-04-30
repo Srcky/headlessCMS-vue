@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import FeatureItem from '@/components/FeatureItem.vue';
+import Feature from '@/components/FeatureItem.vue';
+import { FeatureItem } from '@/types';
 import { onMounted, ref } from 'vue';
 import type { Ref } from 'vue';
 
-interface FeatureItem {
-    heading: string;
-    description: string;
-    image?: any;
-}
 
 const apiUrl = import.meta.env.VITE_API_URL;
 const featureItems: Ref<FeatureItem[]> = ref([]);
@@ -32,7 +28,7 @@ onMounted(() => {
             <p class="mt-4 leading-6 text-wave-200">Duis aute irure dolor in reprehenderit in voluptate velit
                 esse cillum dolore eu fugiat nulla pariatur. <br> Excepteur sint occaecat cupidatat non proident!</p>
             <ul class="flex my-16 gap-x-8 gap-y-14 flex-wrap justify-center">
-                <FeatureItem v-for="item in featureItems" :image="item.image" :heading="item.heading"
+                <Feature v-for="item in featureItems" :image="item.image" :heading="item.heading"
                     :description="item.description" />
             </ul>
         </div>
