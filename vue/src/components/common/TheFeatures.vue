@@ -9,10 +9,11 @@ interface FeatureItem {
     image?: any;
 }
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const featureItems: Ref<FeatureItem[]> = ref([]);
 
 onMounted(() => {
-    fetch('http://localhost:1337/api/feature-items?populate=image').then(result => result.json()).then(res => {
+    fetch(`${apiUrl}/api/feature-items?populate=image`).then(result => result.json()).then(res => {
         if (res.data) {
             console.log(res.data);
             res.data.forEach((element: any) => {
