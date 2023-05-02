@@ -8,10 +8,11 @@ import { MediaContent } from '@/types';
 const headerHeightValue: Ref<Record<string, Number>> | undefined = inject('headerHeightValue');
 
 const apiUrl = import.meta.env.VITE_API_URL;
+const baseUrl = import.meta.env.VITE_BASE_URL;
 const heroBanner: Ref<MediaContent | null> = ref(null);
 
 onMounted(() => {
-    fetch(`${apiUrl}/api/home-page-hero?populate=heroBanner.media`).then(result => result.json()).then(res => {
+    fetch(`${apiUrl}/home-page-hero?populate=heroBanner.media`).then(result => result.json()).then(res => {
         heroBanner.value = res.data.attributes.heroBanner;
     });
 });
@@ -20,7 +21,7 @@ onMounted(() => {
     <section :style="`--header-height: ${headerHeightValue}px`"
         class="relative grid content-center h-[100vh] w-full before:block before:absolute before:content-[''] before:bg-black before:opacity-70 before:-z-10">
         <video v-if="heroBanner" loop muted autoplay class="absolute -z-20 object-cover w-full h-[100vh]">
-            <source :src="apiUrl + heroBanner?.media.data.attributes.url" type="video/webm">
+            <source :src="baseUrl + heroBanner?.media.data.attributes.url" type="video/webm">
             Sorry, your browser doesn't support HTML video.
         </video>
         <div class="hero-text padded-container text-white relative">

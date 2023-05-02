@@ -10,7 +10,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 const recommendedItems: Ref<MediaContent[]> = ref([]);
 
 onMounted(() => {
-    fetch(`${apiUrl}/api/home-page-slide?populate=slide.media`).then(result => result.json()).then(res => {
+    fetch(`${apiUrl}/home-page-slide?populate=slide.media`).then(result => result.json()).then(res => {
         if (res.data) {
             res.data.attributes.slide.forEach((element: any) => {
                 recommendedItems.value.push(element);

@@ -18,7 +18,7 @@ const handleSubmit = () => {
 };
 
 onMounted(() => {
-    fetch(`${apiUrl}/api/anti-spam-protection?populate=*`).then(result => result.json()).then(res => {
+    fetch(`${apiUrl}/anti-spam-protection?populate=*`).then(result => result.json()).then(res => {
         const questions = res.data.attributes.antiSpam.questions;
         questions.forEach((element: never) => {
             antiSpam.value.push(element);

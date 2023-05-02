@@ -10,14 +10,14 @@ const featureItems: Ref<FeatureItem[]> = ref([]);
 const introText: Ref<IntroHeading | undefined> = ref();
 
 onMounted(() => {
-    fetch(`${apiUrl}/api/feature-items?populate=*`).then(result => result.json()).then(res => {
+    fetch(`${apiUrl}/feature-items?populate=*`).then(result => result.json()).then(res => {
         if (res.data) {
             res.data.forEach((element: any) => {
                 featureItems.value.push(element.attributes);
             });
         }
     });
-    fetch(`${apiUrl}/api/home-page-intro?populate=*`).then(result => result.json()).then(res => {
+    fetch(`${apiUrl}/home-page-intro?populate=*`).then(result => result.json()).then(res => {
         introText.value = res.data.attributes.homePageIntro;
     });
 })
