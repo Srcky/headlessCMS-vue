@@ -1,50 +1,31 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const submitted = ref(false);
 const FORM_ENDPOINT = '';
-const securityQuestions = [
-    {
-        q: 'Koliko je 3 plus 3',
-        a: 6
-    },
-    {
-        q: 'Koliko je 2 puta 7',
-        a: 14
-    },
-    {
-        q: 'Koliko je 4 puta 3',
-        a: 12
-    },
-    {
-        q: 'Koliko je 12 manje 2',
-        a: 10
-    },
-    {
-        q: 'Koliko je 100 plus 1',
-        a: 101
-    },
-    {
-        q: 'Koliko je 100 plus 100',
-        a: 200
-    },
-    {
-        q: 'Koliko je 50 puta 2',
-        a: 100
-    },
-];
+const apiUrl = import.meta.env.VITE_API_URL;
+const antiSpam = ref([]);
 const answer = ref();
-
-const questionRandomizer = securityQuestions[Math.floor(Math.random() * 7)];
+const questionRandomizer = ref();
 
 const handleSubmit = () => {
-    if (Number(answer.value.value) === questionRandomizer.a) {
+    if (Number(answer.value.value) === questionRandomizer.value.a) {
         console.log('Tacno');
         // submitted.value = true;
     } else {
-        console.log(questionRandomizer.a);
+        console.log(questionRandomizer.value.a);
     }
 };
+
+onMounted(() => {
+    fetch(`${apiUrl}/api/anti-spam-protection?populate=*`).then(result => result.json()).then(res => {
+        const questions = res.data.attributes.antiSpam.questions;
+        questions.forEach((element: never) => {
+            antiSpam.value.push(element);
+        });
+        questionRandomizer.value = antiSpam.value[Math.floor(Math.random() * questions.length)];
+    });
+});
 
 </script>
 <template>
@@ -94,8 +75,7 @@ const handleSubmit = () => {
                             <h2 class="text-2xl">Hvala Vam!</h2>
                             <div class="text-md">Kontaktiraćemo Vas uskoro.</div>
                         </div>
-                        <form v-else :action="FORM_ENDPOINT" @submit.prevent="handleSubmit" method="POST"
-                            target="_blank">
+                        <form v-else :action="FORM_ENDPOINT" @submit.prevent="handleSubmit" method="POST" target="_blank">
                             <div class="mb-3 pt-0">
                                 <input type="text" placeholder="Vaše ime" name="name"
                                     class="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
@@ -115,7 +95,7 @@ const handleSubmit = () => {
                             </div>
                             <div class="question text-white mb-4">
                                 <label for="securityQuestion">
-                                    Anti-bot zaštita: {{ questionRandomizer.q }} (upisati broj)
+                                    Anti-bot zaštita: {{ questionRandomizer?.q }} (upisati broj)
                                     <input type="number" name="securityQuestion" ref="answer"
                                         class="mt-2 px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full">
                                 </label>

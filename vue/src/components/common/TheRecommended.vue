@@ -1,34 +1,24 @@
 <script setup lang="ts">
 import RecommendedItem from '@/components/RecommendedItem.vue';
-import kasa from '@/assets/images/dp-25.webp';
-import comp from '@/assets/images/RAC21902.webp';
-import kamera from '@/assets/images/SCA00404.webp';
+import { MediaContent } from '@/types';
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import { onMounted, ref } from 'vue';
+import type { Ref } from 'vue';
 import '@splidejs/vue-splide/css';
 
-const recommendedItems = [
-    {
-        heading: 'e-Fiskalizacija',
-        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        buttonText: 'Saznaj više',
-        image: kasa,
-        imageAlt: 'Fiskalna kasa dp-25'
-    },
-    {
-        heading: 'Video nadzor',
-        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        buttonText: 'Saznaj više',
-        image: kamera,
-        imageAlt: 'Fiskalna kasa dp-25'
-    },
-    {
-        heading: 'Racunari',
-        text: 'EWE PC INTEL CPU: Intel® Core™ i5, 16GB RAM, Graficka kartica: ASUS DUAL-RTX2060-O6G-EVO, 500GB SSD, Kuciste: FALCON Pathfinder',
-        buttonText: 'Saznaj više',
-        image: comp,
-        imageAlt: 'Ewe Racunar RAC21902'
-    },
-];
+const apiUrl = import.meta.env.VITE_API_URL;
+const recommendedItems: Ref<MediaContent[]> = ref([]);
+
+onMounted(() => {
+    fetch(`${apiUrl}/api/home-page-slide?populate=slide.media`).then(result => result.json()).then(res => {
+        if (res.data) {
+            res.data.attributes.slide.forEach((element: any) => {
+                recommendedItems.value.push(element);
+            });
+        }
+    });
+});
+
 </script>
 
 <template>
@@ -46,8 +36,8 @@ const recommendedItems = [
     <section class="bg-gray-200">
         <Splide :options="{ rewind: true, type: 'loop', autoplay: true, arrows: false }" class="pb-6">
             <SplideSlide v-for="(slide, index) in recommendedItems" :key="index">
-                <RecommendedItem :heading="slide.heading" :text="slide.text" :buttonText="slide.buttonText"
-                    :image="slide.image" :imageAlt="slide.imageAlt"></RecommendedItem>
+                <RecommendedItem :heading="slide.heading" :text="slide.description" :buttonText="slide.button"
+                    :image="slide.media.data.attributes.url" :imageAlt="slide.media.data.attributes.alternativeText" />
             </SplideSlide>
         </Splide>
     </section>

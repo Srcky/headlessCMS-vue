@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_carousel_carousel_slides",
+  "info": {
+    "displayName": "media-banner",
+    "icon": "barcode",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "button": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    }
+  }
+}

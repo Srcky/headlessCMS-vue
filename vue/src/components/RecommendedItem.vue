@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 defineProps<{
   heading: string,
   text: string;
@@ -18,7 +20,7 @@ defineProps<{
       <button class="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded w-[10rem]">{{ buttonText }}</button>
     </div>
     <div class="flex justify-center basis-full md:basis-[calc(50%-1rem)] items-center py-8">
-      <img :src="image" :alt="imageAlt" class="max-w-[300px]">
+      <img :src="apiUrl + image" :alt="imageAlt" class="max-w-[300px]">
     </div>
   </div>
 </template>
