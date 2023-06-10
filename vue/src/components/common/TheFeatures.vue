@@ -1,26 +1,27 @@
 <script setup lang="ts">
 import Feature from '@/components/FeatureItem.vue';
 import { FeatureItem, IntroHeading } from '@/types';
+import { apiService } from '@/api/apiServices';
 import { onMounted, ref } from 'vue';
 import type { Ref } from 'vue';
 
-
-const apiUrl = import.meta.env.VITE_API_URL;
 const featureItems: Ref<FeatureItem[]> = ref([]);
 const introText: Ref<IntroHeading | undefined> = ref();
 
-onMounted(() => {
-    fetch(`${apiUrl}/feature-items?populate=*`).then(result => result.json()).then(res => {
-        if (res.data) {
-            res.data.forEach((element: any) => {
+onMounted(async () => {
+    try {
+        const featuresRes = await apiService.getFeatures();
+        if (featuresRes.data) {
+            featuresRes.data.forEach((element: any) => {
                 featureItems.value.push(element.attributes);
             });
         }
-    });
-    fetch(`${apiUrl}/home-page-intro?populate=*`).then(result => result.json()).then(res => {
-        introText.value = res.data.attributes.homePageIntro;
-    });
-})
+        const introTextRes = await apiService.getIntroText();
+        introText.value = introTextRes.data.attributes.homePageIntro;
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 
 </script>

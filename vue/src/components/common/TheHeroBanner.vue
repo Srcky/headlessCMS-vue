@@ -3,20 +3,20 @@ import { inject } from 'vue';
 import type { Ref } from 'vue';
 import { onMounted, ref } from 'vue';
 import { MediaContent } from '@/types';
+import { apiService } from '@/api/apiServices';
 
 
 const headerHeightValue: Ref<Record<string, Number>> | undefined = inject('headerHeightValue');
 
-const apiUrl = import.meta.env.VITE_API_URL;
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const heroBanner: Ref<MediaContent | null> = ref(null);
 
 onMounted(() => {
-    fetch(`${apiUrl}/home-page-hero?populate=heroBanner.media`).then(result => result.json()).then(res => {
+    apiService.getBanner().then(res => {
         heroBanner.value = res.data.attributes.heroBanner;
     });
 });
-</script>
+</script>~
 <template>
     <section :style="`--header-height: ${headerHeightValue}px`"
         class="relative grid content-center h-[100vh] w-full before:block before:absolute before:content-[''] before:bg-black before:opacity-70 before:-z-10">

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { apiService } from '@/api/apiServices';
 
 const submitted = ref(false);
 const FORM_ENDPOINT = '';
-const apiUrl = import.meta.env.VITE_API_URL;
 const antiSpam = ref([]);
 const answer = ref();
 const questionRandomizer = ref();
@@ -17,14 +17,13 @@ const handleSubmit = () => {
     }
 };
 
-onMounted(() => {
-    fetch(`${apiUrl}/anti-spam-protection?populate=*`).then(result => result.json()).then(res => {
-        const questions = res.data.attributes.antiSpam.questions;
-        questions.forEach((element: never) => {
-            antiSpam.value.push(element);
-        });
-        questionRandomizer.value = antiSpam.value[Math.floor(Math.random() * questions.length)];
+onMounted(async () => {
+    const antiSpamRes = await apiService.getAntiSpam();
+    const questions = antiSpamRes.data.attributes.antiSpam.questions;
+    questions.forEach((element: never) => {
+        antiSpam.value.push(element);
     });
+    questionRandomizer.value = antiSpam.value[Math.floor(Math.random() * questions.length)];
 });
 
 </script>

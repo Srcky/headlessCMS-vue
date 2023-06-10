@@ -2,21 +2,25 @@
 import RecommendedItem from '@/components/RecommendedItem.vue';
 import { MediaContent } from '@/types';
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
-import { onMounted, ref } from 'vue';
+import { apiService } from '@/api/apiServices';
+import { onBeforeMount, ref } from 'vue';
 import type { Ref } from 'vue';
 import '@splidejs/vue-splide/css';
 
-const apiUrl = import.meta.env.VITE_API_URL;
 const recommendedItems: Ref<MediaContent[]> = ref([]);
+const splideOptions = { autoplay: true, arrows: false, type: 'loop' };
 
-onMounted(() => {
-    fetch(`${apiUrl}/home-page-slide?populate=slide.media`).then(result => result.json()).then(res => {
-        if (res.data) {
-            res.data.attributes.slide.forEach((element: any) => {
+onBeforeMount(async () => {
+    try {
+        const slidesRes = await apiService.getSlides();
+        if (slidesRes.data) {
+            slidesRes.data.attributes.slide.forEach((element: any) => {
                 recommendedItems.value.push(element);
             });
         }
-    });
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 </script>
@@ -34,7 +38,7 @@ onMounted(() => {
             fill="#E5E7EB" />
     </svg>
     <section class="bg-gray-200">
-        <Splide :options="{ rewind: true, type: 'loop', autoplay: true, arrows: false }" class="pb-6">
+        <Splide :options="splideOptions" class="pb-6">
             <SplideSlide v-for="(slide, index) in recommendedItems" :key="index">
                 <RecommendedItem :heading="slide.heading" :text="slide.description" :buttonText="slide.button"
                     :image="slide.media.data.attributes.url" :imageAlt="slide.media.data.attributes.alternativeText" />

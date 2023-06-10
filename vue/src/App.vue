@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
 import Header from '@/components/common/TheHeader.vue';
 import Footer from './components/common/TheFooter.vue';
 import { ref, provide } from 'vue';
