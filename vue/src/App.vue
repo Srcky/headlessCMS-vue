@@ -91,6 +91,6 @@ input[type='password']:focus {
 }
 
 .padded-container {
-  @apply px-5 m-auto max-w-7xl;
+  @apply px-5 m-auto max-w-7xl w-full overflow-hidden;
 }
 </style>

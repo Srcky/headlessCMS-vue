@@ -1,10 +1,10 @@
 {
-  "kind": "singleType",
-  "collectionName": "home_page_heroes",
+  "kind": "collectionType",
+  "collectionName": "hero_banners",
   "info": {
-    "singularName": "home-page-hero",
-    "pluralName": "home-page-heroes",
-    "displayName": "Home Page Hero"
+    "singularName": "hero-banner",
+    "pluralName": "hero-banners",
+    "displayName": "HeroBanner"
   },
   "options": {
     "draftAndPublish": true
