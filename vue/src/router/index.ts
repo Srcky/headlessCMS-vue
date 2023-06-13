@@ -40,6 +40,9 @@ const router = createRouter({
       component: OnamaView,
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 };
+  },
 });
 
 export default router;
