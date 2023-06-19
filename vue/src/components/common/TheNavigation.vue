@@ -10,14 +10,14 @@ const toggleNav = () => (showMobileMenu.value = !showMobileMenu.value);
 const closeNav = () => (showMobileMenu.value = false);
 const navigationItems = [
     {
-        title: 'Alarmi',
-        iconClass: 'comment',
-        to: { name: 'alarmi' },
-    },
-    {
         title: 'Video Nadzor',
         iconClass: 'comments',
         to: { name: 'videoNadzor' },
+    },
+    {
+        title: 'Alarmi',
+        iconClass: 'comment',
+        to: { name: 'alarmi' },
     },
     {
         title: 'Fiskalne kase',

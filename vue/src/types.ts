@@ -5,9 +5,10 @@ export interface FeatureItem {
 }
 
 export interface MediaContent {
-  heading: string;
-  description: string;
-  button: string;
+  heading?: string;
+  description?: string;
+  button?: string;
+  buttonLink?: string;
   media: any;
 }
 export interface IntroHeading {

@@ -4,6 +4,6 @@ import HeroBanner from '@/components/common/TheHeroBanner.vue';
 </script>
 
 <template>
-    <HeroBanner :id="1"></HeroBanner>
+    <HeroBanner :id="2"></HeroBanner>
 </template>
 

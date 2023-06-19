@@ -4,7 +4,8 @@
   "info": {
     "singularName": "hero-banner",
     "pluralName": "hero-banners",
-    "displayName": "HeroBanner"
+    "displayName": "HeroBanner",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

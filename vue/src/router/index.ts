@@ -15,14 +15,14 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/alarmi',
-      name: 'alarmi',
-      component: AlarmiView,
-    },
-    {
       path: '/video-nadzor',
       name: 'videoNadzor',
       component: VideoNadzorView,
+    },
+    {
+      path: '/alarmi',
+      name: 'alarmi',
+      component: AlarmiView,
     },
     {
       path: '/fiskalne-kase',

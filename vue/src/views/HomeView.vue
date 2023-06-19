@@ -5,7 +5,7 @@ import Recommended from '@/components/common/TheRecommended.vue';
 </script>
 
 <template>
-  <HeroBanner :id="2"></HeroBanner>
+  <HeroBanner :id="1"></HeroBanner>
   <Features></Features>
   <Recommended></Recommended>
 </template>

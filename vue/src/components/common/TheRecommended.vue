@@ -8,7 +8,7 @@ import type { Ref } from 'vue';
 import '@splidejs/vue-splide/css';
 
 const recommendedItems: Ref<MediaContent[]> = ref([]);
-const splideOptions = { autoplay: true, arrows: false, type: 'loop' };
+const splideOptions = { autoplay: true, arrows: false, type: 'slide', rewind: true };
 
 onBeforeMount(async () => {
     try {

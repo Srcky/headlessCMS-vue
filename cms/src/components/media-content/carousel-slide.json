@@ -9,15 +9,15 @@
   "attributes": {
     "heading": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "description": {
       "type": "text",
-      "required": true
+      "required": false
     },
     "button": {
       "type": "string",
-      "required": true,
+      "required": false,
       "maxLength": 50
     },
     "media": {
@@ -28,6 +28,10 @@
         "images",
         "videos"
       ]
+    },
+    "buttonLink": {
+      "type": "string",
+      "default": "/"
     }
   }
 }

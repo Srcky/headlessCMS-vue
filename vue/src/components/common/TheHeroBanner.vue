@@ -21,6 +21,8 @@ onMounted(async () => {
         console.log(error);
     }
 });
+
+
 </script>~
 <template>
     <section :style="`--header-height: ${headerHeightValue}px`"
@@ -40,10 +42,14 @@ onMounted(async () => {
         </picture>
         <div class="hero-text padded-container text-white relative">
             <div class="max-w-[90%] md:max-w-[70%] px-8 xl:px-0">
-                <h1 class="leading-tight font-light break-words">{{ heroBanner?.heading }}</h1>
-                <p class="text-l md:text-xl py-10 font-light break-words"> {{ heroBanner?.description }}</p>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded w-[10rem]">{{ heroBanner?.button
-                }}</button>
+                <h1 v-if="heroBanner?.heading" class="leading-tight font-light break-words">{{ heroBanner?.heading }}</h1>
+                <p v-if="heroBanner?.description" class="text-l md:text-xl py-10 font-light break-words"> {{
+                    heroBanner?.description }}</p>
+                <router-link v-if="heroBanner?.buttonLink" :to="heroBanner?.buttonLink">
+                    <button role="link" class="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded w-[10rem]">{{
+                        heroBanner?.button
+                    }}</button>
+                </router-link>
             </div>
         </div>
     </section>
