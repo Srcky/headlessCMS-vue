@@ -32,6 +32,10 @@
     "buttonLink": {
       "type": "string",
       "default": "/"
+    },
+    "transparentOverlay": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

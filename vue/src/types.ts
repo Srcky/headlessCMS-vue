@@ -9,6 +9,7 @@ export interface MediaContent {
   description?: string;
   button?: string;
   buttonLink?: string;
+  transparentOverlay?: boolean;
   media: any;
 }
 export interface IntroHeading {

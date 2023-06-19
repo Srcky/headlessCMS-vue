@@ -1,20 +1,19 @@
 <script setup lang="ts">
 import RecommendedItem from '@/components/RecommendedItem.vue';
 import { MediaContent } from '@/types';
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import { Splide, SplideSlide, Options } from '@splidejs/vue-splide';
 import { apiService } from '@/api/apiServices';
-import { onBeforeMount, ref } from 'vue';
-import type { Ref } from 'vue';
+import { onBeforeMount, ref, Ref } from 'vue';
 import '@splidejs/vue-splide/css';
 
 const recommendedItems: Ref<MediaContent[]> = ref([]);
-const splideOptions = { autoplay: true, arrows: false, type: 'slide', rewind: true };
+const splideOptions: Options = { autoplay: true, rewind: true, arrows: false, type: 'slide' };
 
 onBeforeMount(async () => {
     try {
         const slidesRes = await apiService.getSlides();
         if (slidesRes.data) {
-            slidesRes.data.attributes.slide.forEach((element: any) => {
+            slidesRes.data.attributes.slide.forEach((element: MediaContent) => {
                 recommendedItems.value.push(element);
             });
         }
@@ -38,10 +37,11 @@ onBeforeMount(async () => {
             fill="#E5E7EB" />
     </svg>
     <section class="bg-gray-200">
-        <Splide :options="splideOptions" class="pb-6">
+        <Splide v-if="recommendedItems.length > 0" :options="splideOptions" class="pb-6">
             <SplideSlide v-for="(slide, index) in recommendedItems" :key="index">
                 <RecommendedItem :heading="slide.heading" :text="slide.description" :buttonText="slide.button"
-                    :image="slide.media.data.attributes.url" :imageAlt="slide.media.data.attributes.alternativeText" />
+                    :buttonLink="slide.buttonLink" :image="slide.media?.data?.attributes?.url"
+                    :imageAlt="slide.media?.data?.attributes?.alternativeText" />
             </SplideSlide>
         </Splide>
     </section>

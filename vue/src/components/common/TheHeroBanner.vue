@@ -22,11 +22,10 @@ onMounted(async () => {
     }
 });
 
-
-</script>~
+</script>
 <template>
-    <section :style="`--header-height: ${headerHeightValue}px`"
-        class="relative grid content-center h-[100vh] w-full before:block before:absolute before:content-[''] before:bg-black before:opacity-70 before:-z-10">
+    <section :style="`--header-height: ${headerHeightValue}px`" class="relative grid content-center h-[100vh] w-full "
+        :class="heroBanner?.transparentOverlay ? `before:block before:absolute before:content-[''] before:bg-black before:opacity-70 before:-z-10` : ''">
         <video v-if="heroBanner?.media?.data?.attributes?.mime === 'video/webm'" loop muted autoplay>
             <source :src="baseUrl + heroBanner?.media?.data?.attributes?.url" type="video/webm">
             Sorry, your browser doesn't support HTML video.
