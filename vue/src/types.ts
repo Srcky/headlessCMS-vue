@@ -7,6 +7,7 @@ export interface FeatureItem {
 export interface MediaContent {
   heading?: string;
   description?: string;
+  textColor?: string;
   button?: string;
   buttonLink?: string;
   transparentOverlay?: boolean;

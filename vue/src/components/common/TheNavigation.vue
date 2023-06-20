@@ -25,7 +25,7 @@ const navigationItems = [
         to: { name: 'fiskalneKase' },
     },
     {
-        title: 'Racunari i oprema',
+        title: 'Računari i oprema',
         iconClass: 'comments',
         to: { name: 'racunariOprema' },
     },

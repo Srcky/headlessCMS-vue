@@ -33,9 +33,14 @@
       "type": "string",
       "default": "/"
     },
+    "textColor": {
+      "type": "string",
+      "regex": "^#(?:[0-9a-fA-F]{3}){1,2}$"
+    },
     "transparentOverlay": {
-      "type": "boolean",
-      "default": true
+      "type": "decimal",
+      "max": 1,
+      "min": 0
     }
   }
 }

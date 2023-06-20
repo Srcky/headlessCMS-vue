@@ -24,8 +24,9 @@ onMounted(async () => {
 
 </script>
 <template>
-    <section :style="`--header-height: ${headerHeightValue}px`" class="relative grid content-center h-[100vh] w-full "
-        :class="heroBanner?.transparentOverlay ? `before:block before:absolute before:content-[''] before:bg-black before:opacity-70 before:-z-10` : ''">
+    <section
+        :style="`--header-height: ${headerHeightValue}px; --text-color:${heroBanner?.textColor ? heroBanner?.textColor : '#ffffff'}; --opacity:${heroBanner?.transparentOverlay ? heroBanner.transparentOverlay : 0.7}`"
+        class="relative grid content-center h-[100vh] w-full before:block before:absolute before:content-[''] before:bg-black before:-z-10">
         <video v-if="heroBanner?.media?.data?.attributes?.mime === 'video/webm'" loop muted autoplay>
             <source :src="baseUrl + heroBanner?.media?.data?.attributes?.url" type="video/webm">
             Sorry, your browser doesn't support HTML video.
@@ -44,7 +45,7 @@ onMounted(async () => {
                 <h1 v-if="heroBanner?.heading" class="leading-tight font-light break-words">{{ heroBanner?.heading }}</h1>
                 <p v-if="heroBanner?.description" class="text-l md:text-xl py-10 font-light break-words"> {{
                     heroBanner?.description }}</p>
-                <router-link v-if="heroBanner?.buttonLink" :to="heroBanner?.buttonLink">
+                <router-link v-if="heroBanner?.buttonLink && heroBanner?.button" :to="heroBanner?.buttonLink">
                     <button role="link" class="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded w-[10rem]">{{
                         heroBanner?.button
                     }}</button>
@@ -58,6 +59,7 @@ section {
     &::before {
         inset: 0px 0px var(--header-height) 0px;
         top: calc(0px - var(--header-height));
+        opacity: var(--opacity);
     }
 
     video,
@@ -67,6 +69,7 @@ section {
     }
 
     .hero-text {
+        color: var(--text-color);
         top: calc(0px - var(--header-height)/2);
 
         h1 {
