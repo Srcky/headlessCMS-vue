@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import TheWelcome from '@/components/TheWelcome.vue'
+import HeroBanner from '@/components/common/TheHeroBanner.vue';
+import Features from '@/components/common/TheFeatures.vue';
+import Recommended from '@/components/common/TheRecommended.vue';
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <HeroBanner :id="1"></HeroBanner>
+  <Features></Features>
+  <Recommended></Recommended>
 </template>
+

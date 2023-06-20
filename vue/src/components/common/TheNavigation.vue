@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { defineComponent } from '@vue/runtime-core';
-import { computed, ref } from 'vue';
+import { onMounted, computed, ref } from 'vue';
+import type { Ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const showMobileMenu = ref(false);
+
 const toggleNav = () => (showMobileMenu.value = !showMobileMenu.value);
 const closeNav = () => (showMobileMenu.value = false);
 const navigationItems = [
     {
-        title: 'Home',
-        iconClass: 'user-friends',
-        to: { name: 'home' },
+        title: 'Video Nadzor',
+        iconClass: 'comments',
+        to: { name: 'videoNadzor' },
     },
     {
         title: 'Alarmi',
@@ -18,17 +20,12 @@ const navigationItems = [
         to: { name: 'alarmi' },
     },
     {
-        title: 'Video Nadzor',
-        iconClass: 'comments',
-        to: { name: 'videoNadzor' },
-    },
-    {
         title: 'Fiskalne kase',
         iconClass: 'chart-bar',
         to: { name: 'fiskalneKase' },
     },
     {
-        title: 'Racunari i oprema',
+        title: 'Računari i oprema',
         iconClass: 'comments',
         to: { name: 'racunariOprema' },
     },
@@ -37,21 +34,17 @@ const navigationItems = [
         iconClass: 'comments',
         to: { name: 'oNama' },
     },
-    {
-        title: 'Kontakt',
-        iconClass: 'comments',
-        to: { name: 'kontakt' },
-    },
 ];
 
 </script>
 <template>
-    <nav aria-label="Primary navigation">
-        <ul class="center-gap">
+    <nav class="hidden md:block" aria-label="Primary navigation">
+        <ul class="flex flex-wrap justify-center gap-7">
             <template v-for="item in navigationItems" :key="item.title">
                 <li>
-                    <router-link active-class="active" :aria-label="item.title" :to="item.to">
-                        <!-- <fa-icon :icon="item.iconClass" class="text-2xl align-middle text-msg-red-500" /> -->
+                    <router-link
+                        class="block relative text-white after:block after:absolute after:content-[''] after:bg-white after:w-0 after:h-[2px] after:transition-[width] after:ease-in-out after:delay-150 hover:after:w-full"
+                        active-class="active" :aria-label="item.title" :to="item.to">
                         {{ item.title }}
                     </router-link>
                 </li>
@@ -80,3 +73,8 @@ const navigationItems = [
         </div>
     </nav> -->
 </template>
+<style lang="scss" scoped>
+.active::after {
+    @apply w-full;
+}
+</style>

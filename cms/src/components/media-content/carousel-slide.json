@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_carousel_carousel_slides",
+  "info": {
+    "displayName": "media-banner",
+    "icon": "barcode",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "button": {
+      "type": "string",
+      "required": false,
+      "maxLength": 50
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "buttonLink": {
+      "type": "string",
+      "default": "/"
+    },
+    "textColor": {
+      "type": "string",
+      "regex": "^#(?:[0-9a-fA-F]{3}){1,2}$"
+    },
+    "transparentOverlay": {
+      "type": "decimal",
+      "max": 1,
+      "min": 0
+    }
+  }
+}

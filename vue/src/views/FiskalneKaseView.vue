@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import HeroBanner from '@/components/common/TheHeroBanner.vue';
+
 </script>
 <template>
-    <h1>Fiskalne Kase</h1>
+    <HeroBanner :id="4"></HeroBanner>
 </template>

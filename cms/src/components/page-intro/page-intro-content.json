@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_page_intro_page_intro_contents",
+  "info": {
+    "displayName": "page-intro-content",
+    "icon": "align-center",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
