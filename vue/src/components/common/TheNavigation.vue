@@ -10,6 +10,11 @@ const toggleNav = () => (showMobileMenu.value = !showMobileMenu.value);
 const closeNav = () => (showMobileMenu.value = false);
 const navigationItems = [
     {
+        title: 'Početna',
+        iconClass: 'comments',
+        to: { name: 'home' },
+    },
+    {
         title: 'Video Nadzor',
         iconClass: 'comments',
         to: { name: 'videoNadzor' },

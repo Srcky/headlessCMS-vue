@@ -12,7 +12,15 @@ export const apiService = {
     return await result.json();
   },
   async getIntroText<T>(id: number): Promise<ApiResponse<T>> {
-    const result = await fetch(`${apiUrl}/page-intros/${id}?populate=*`);
+    const result = await fetch(
+      `${apiUrl}/page-intros/${id}?populate=*&populate=pageIntro.backgroundImage`
+    );
+    return await result.json();
+  },
+  async getMidContent<T>(id: number): Promise<ApiResponse<T>> {
+    const result = await fetch(
+      `${apiUrl}/page-mid-contents/${id}?populate=*&populate=pageMidContent.backgroundImage`
+    );
     return await result.json();
   },
   async getFeatures<T>(): Promise<ApiResponse<T>> {

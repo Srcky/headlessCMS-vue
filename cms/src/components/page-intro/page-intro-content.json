@@ -14,7 +14,18 @@
     },
     "description": {
       "type": "text",
-      "required": true
+      "required": false
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "longDescription": {
+      "type": "richtext"
     }
   }
 }

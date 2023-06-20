@@ -14,6 +14,8 @@ export interface MediaContent {
   media: any;
 }
 export interface IntroHeading {
-  heading: string;
-  description: string;
+  heading?: string;
+  description?: string;
+  longDescription?: string;
+  backgroundImage?: any;
 }

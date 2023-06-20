@@ -6,6 +6,7 @@ import { apiService } from '@/api/apiServices';
 const props = defineProps<{
     id: number;
 }>();
+const baseUrl = import.meta.env.VITE_BASE_URL;
 const introText: Ref<IntroHeading | undefined> = ref();
 
 onBeforeMount(async () => {
@@ -20,5 +21,15 @@ onBeforeMount(async () => {
 
 <template>
     <h2 v-if="introText?.heading" class="text-4xl font-light">{{ introText.heading }}</h2>
-    <p v-if="introText?.description" class="mt-4 leading-6 text-wave-200 max-w-2xl">{{ introText.description }}</p>
+    <p v-if="introText?.description" class="mt-8 leading-6 max-w-2xl">{{ introText.description }}</p>
+    <picture v-if="introText?.backgroundImage?.data">
+        <source :srcset="baseUrl + introText?.backgroundImage.data?.attributes?.url">
+        <source :srcset="baseUrl + introText?.backgroundImage.data?.attributes?.formats?.large?.url"
+            media="(min-width: 48rem)">
+        <source :srcset="baseUrl + introText?.backgroundImage.data?.attributes?.formats?.medium?.url"
+            media="(min-width: 30rem)">
+        <img :src="baseUrl + introText?.backgroundImage.data?.attributes?.formats?.small?.url" :alt="introText?.heading"
+            :width="introText?.backgroundImage.data?.attributes?.formats?.small?.width"
+            :height="introText?.backgroundImage.data?.attributes?.formats?.small?.height" loading="lazy" decoding="async">
+    </picture>
 </template>
