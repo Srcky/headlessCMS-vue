@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_item_details_item_details_contents",
+  "info": {
+    "displayName": "Item-details-content",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "button": {
+      "type": "string"
+    }
+  }
+}

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "page_intros",
+  "collectionName": "page_mid_contents",
   "info": {
-    "singularName": "page-intro",
-    "pluralName": "page-intros",
-    "displayName": "Page Intro",
+    "singularName": "page-mid-content",
+    "pluralName": "page-mid-contents",
+    "displayName": "Page Mid Content",
     "description": ""
   },
   "options": {
@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "pageIntro": {
+    "pageMidContent": {
       "type": "component",
       "repeatable": false,
       "component": "page-intro.page-intro-content"

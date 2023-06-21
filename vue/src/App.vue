@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Header from '@/components/common/TheHeader.vue';
-import Footer from './components/common/TheFooter.vue';
 import { ref, provide } from 'vue';
 import type { Ref } from 'vue';
+import Header from '@/components/common/TheHeader.vue';
+import Footer from './components/common/TheFooter.vue';
 
 const headerHeight = ref<Ref | Number>();
 const getHeaderHeight = (newHeightValue: Number) => {

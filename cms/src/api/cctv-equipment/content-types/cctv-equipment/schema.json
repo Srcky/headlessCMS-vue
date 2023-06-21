@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "cctv_equipments",
+  "info": {
+    "singularName": "cctv-equipment",
+    "pluralName": "cctv-equipments",
+    "displayName": "CCTV Equipment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cctvItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "item-details.item-details-content"
+    }
+  }
+}

@@ -36,9 +36,9 @@ onMounted(async () => {
             <source :srcset="baseUrl + heroBanner?.media?.data?.attributes?.formats?.large?.url" media="(min-width: 48rem)">
             <source :srcset="baseUrl + heroBanner?.media?.data?.attributes?.formats?.medium?.url"
                 media="(min-width: 30rem)">
-            <img :src="baseUrl + heroBanner?.media?.data?.attributes?.formats?.small?.url" :alt="heroBanner?.heading"
-                :width="heroBanner?.media?.data?.attributes?.width" :height="heroBanner?.media?.data?.attributes?.height"
-                loading="lazy" decoding="async">
+            <img class="h-[100dvh] object-cover" :src="baseUrl + heroBanner?.media?.data?.attributes?.formats?.small?.url"
+                :alt="heroBanner?.heading" :width="heroBanner?.media?.data?.attributes?.formats?.small?.width"
+                :height="heroBanner?.media?.data?.attributes?.formats?.small?.height" loading="lazy" decoding="async">
         </picture>
         <div class="hero-text padded-container text-white relative">
             <div class="max-w-[90%] md:max-w-[70%] px-8 xl:px-0">
