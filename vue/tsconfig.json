@@ -10,11 +10,11 @@
       "@/*": ["./src/*"]
     },
     "target": "es2020",
-    "module": "es2020",
+    "module": "esnext",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

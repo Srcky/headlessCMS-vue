@@ -27,6 +27,12 @@ export const apiService = {
     const result = await fetch(`${apiUrl}/feature-items?populate=*`);
     return await result.json();
   },
+  async getCctvItems<T>(): Promise<ApiResponse<T>> {
+    const result = await fetch(
+      `${apiUrl}/cctv-equipment?populate=*&populate=cctvItems.image`
+    );
+    return await result.json();
+  },
   async getSlides<T>(): Promise<ApiResponse<T>> {
     const result = await fetch(
       `${apiUrl}/home-page-slide?populate=slide.media`

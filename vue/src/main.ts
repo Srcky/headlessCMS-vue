@@ -1,3 +1,5 @@
+/// <reference path='../env.d.ts' />
+
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import App from './App.vue';

@@ -4,6 +4,13 @@ export interface FeatureItem {
   description: string;
 }
 
+export interface PopularProductItem {
+  image?: any;
+  title?: string;
+  description?: string;
+  button?: string;
+}
+
 export interface MediaContent {
   heading?: string;
   description?: string;
