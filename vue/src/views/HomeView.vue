@@ -2,11 +2,15 @@
 import HeroBanner from '@/components/common/TheHeroBanner.vue';
 import Features from '@/components/common/TheFeatures.vue';
 import Recommended from '@/components/common/TheRecommended.vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const pageId = Number(route.meta.pageId);
 </script>
 
 <template>
-  <HeroBanner></HeroBanner>
-  <Features></Features>
+  <HeroBanner :id="pageId" />
+  <Features :id="pageId"></Features>
   <Recommended></Recommended>
 </template>
 

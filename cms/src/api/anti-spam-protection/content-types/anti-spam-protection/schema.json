@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "anti_spam_protections",
+  "info": {
+    "singularName": "anti-spam-protection",
+    "pluralName": "anti-spam-protections",
+    "displayName": "Anti-Spam Protection",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "antiSpam": {
+      "type": "component",
+      "repeatable": false,
+      "component": "footer-security.footer-questions"
+    }
+  }
+}

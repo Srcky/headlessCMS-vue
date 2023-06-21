@@ -13,33 +13,54 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-    },
-    {
-      path: '/alarmi',
-      name: 'alarmi',
-      component: AlarmiView,
+      meta: {
+        pageId: 1,
+      },
     },
     {
       path: '/video-nadzor',
       name: 'videoNadzor',
       component: VideoNadzorView,
+      meta: {
+        pageId: 2,
+      },
+    },
+    {
+      path: '/alarmi',
+      name: 'alarmi',
+      component: AlarmiView,
+      meta: {
+        pageId: 3,
+      },
     },
     {
       path: '/fiskalne-kase',
       name: 'fiskalneKase',
       component: FiskalneKaseView,
+      meta: {
+        pageId: 4,
+      },
     },
     {
       path: '/racunari-i-oprema',
       name: 'racunariOprema',
       component: RacunariOpremaView,
+      meta: {
+        pageId: 5,
+      },
     },
     {
       path: '/o-nama',
       name: 'oNama',
       component: OnamaView,
+      meta: {
+        pageId: 6,
+      },
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 };
+  },
 });
 
 export default router;

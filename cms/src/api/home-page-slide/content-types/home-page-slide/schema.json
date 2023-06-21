@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_page_slides",
+  "info": {
+    "singularName": "home-page-slide",
+    "pluralName": "home-page-slides",
+    "displayName": "Home Page Slide",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slide": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media-content.carousel-slide"
+    }
+  }
+}

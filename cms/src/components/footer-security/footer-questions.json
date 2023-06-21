@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_footer_security_footer_questions",
+  "info": {
+    "displayName": "footer-questions",
+    "icon": "allergies"
+  },
+  "options": {},
+  "attributes": {
+    "questions": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

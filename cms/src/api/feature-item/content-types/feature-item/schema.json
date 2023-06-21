@@ -4,30 +4,31 @@
   "info": {
     "singularName": "feature-item",
     "pluralName": "feature-items",
-    "displayName": "featureItem"
+    "displayName": "Feature Item",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Heading": {
+    "heading": {
       "type": "string",
       "required": true,
       "default": "Heading text"
     },
-    "Description": {
+    "description": {
       "type": "string",
       "required": true,
       "maxLength": 250
     },
-    "Image": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true,
-      "required": false
+      ]
     }
   }
 }

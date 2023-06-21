@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "page_mid_contents",
+  "info": {
+    "singularName": "page-mid-content",
+    "pluralName": "page-mid-contents",
+    "displayName": "Page Mid Content",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageMidContent": {
+      "type": "component",
+      "repeatable": false,
+      "component": "page-intro.page-intro-content"
+    }
+  }
+}

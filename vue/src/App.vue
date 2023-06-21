@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
-import Header from '@/components/common/TheHeader.vue';
-import Footer from './components/common/TheFooter.vue';
 import { ref, provide } from 'vue';
 import type { Ref } from 'vue';
+import Header from '@/components/common/TheHeader.vue';
+import Footer from './components/common/TheFooter.vue';
 
 const headerHeight = ref<Ref | Number>();
 const getHeaderHeight = (newHeightValue: Number) => {
@@ -92,6 +91,6 @@ input[type='password']:focus {
 }
 
 .padded-container {
-  @apply px-5 m-auto max-w-7xl;
+  @apply px-5 m-auto max-w-7xl w-full overflow-hidden;
 }
 </style>

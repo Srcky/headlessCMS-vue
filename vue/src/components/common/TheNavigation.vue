@@ -10,9 +10,9 @@ const toggleNav = () => (showMobileMenu.value = !showMobileMenu.value);
 const closeNav = () => (showMobileMenu.value = false);
 const navigationItems = [
     {
-        title: 'Alarmi',
-        iconClass: 'comment',
-        to: { name: 'alarmi' },
+        title: 'Početna',
+        iconClass: 'comments',
+        to: { name: 'home' },
     },
     {
         title: 'Video Nadzor',
@@ -20,12 +20,17 @@ const navigationItems = [
         to: { name: 'videoNadzor' },
     },
     {
+        title: 'Alarmi',
+        iconClass: 'comment',
+        to: { name: 'alarmi' },
+    },
+    {
         title: 'Fiskalne kase',
         iconClass: 'chart-bar',
         to: { name: 'fiskalneKase' },
     },
     {
-        title: 'Racunari i oprema',
+        title: 'Računari i oprema',
         iconClass: 'comments',
         to: { name: 'racunariOprema' },
     },
