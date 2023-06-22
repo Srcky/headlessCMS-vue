@@ -9,13 +9,13 @@ const props = defineProps<{
     categoryName: string,
     imageGroup: string,
 }>();
-const popularCctvItems: Ref<PopularProductItem[]> = ref([]);
+const popularProductsItems: Ref<PopularProductItem[]> = ref([]);
 
 onBeforeMount(async () => {
     try {
-        const popularCctv = await apiService.getProductItems(props.categoryName, props.imageGroup);
-        if (popularCctv.data) {
-            popularCctvItems.value = [...popularCctv.data.attributes.cctvEquipment];
+        const popularProducts = await apiService.getProductItems(props.categoryName, props.imageGroup);
+        if (popularProducts.data) {
+            popularProductsItems.value = [...popularProducts.data.attributes[props.imageGroup]];
         }
     } catch (error) {
         console.log(error);
@@ -24,8 +24,8 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-    <ul v-if="popularCctvItems.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-14 my-16">
-        <PopularItem v-for="item in popularCctvItems" :image="item.image" :title="item.title"
+    <ul v-if="popularProductsItems.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-14 my-16">
+        <PopularItem v-for="item in popularProductsItems" :image="item.image" :title="item.title"
             :description="item.description" :button="item.button" />
     </ul>
 </template>

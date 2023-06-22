@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineComponent } from '@vue/runtime-core';
+import { navigationItems } from '@/util/navigationItems';
 import { onMounted, computed, ref } from 'vue';
 import type { Ref } from 'vue';
 import { useRoute } from 'vue-router';
@@ -8,52 +9,19 @@ const showMobileMenu = ref(false);
 
 const toggleNav = () => (showMobileMenu.value = !showMobileMenu.value);
 const closeNav = () => (showMobileMenu.value = false);
-const navigationItems = [
-    {
-        title: 'Početna',
-        iconClass: 'comments',
-        to: { name: 'home' },
-    },
-    {
-        title: 'Video Nadzor',
-        iconClass: 'comments',
-        to: { name: 'videoNadzor' },
-    },
-    {
-        title: 'Alarmi',
-        iconClass: 'comment',
-        to: { name: 'alarmi' },
-    },
-    {
-        title: 'Fiskalne kase',
-        iconClass: 'chart-bar',
-        to: { name: 'fiskalneKase' },
-    },
-    {
-        title: 'Računari i oprema',
-        iconClass: 'comments',
-        to: { name: 'racunariOprema' },
-    },
-    {
-        title: 'O nama',
-        iconClass: 'comments',
-        to: { name: 'oNama' },
-    },
-];
+
 
 </script>
 <template>
     <nav class="hidden md:block" aria-label="Primary navigation">
         <ul class="flex flex-wrap justify-center gap-7">
-            <template v-for="item in navigationItems" :key="item.title">
-                <li>
-                    <router-link
-                        class="block relative text-white after:block after:absolute after:content-[''] after:bg-white after:w-0 after:h-[2px] after:transition-[width] after:ease-in-out after:delay-150 hover:after:w-full"
-                        active-class="active" :aria-label="item.title" :to="item.to">
-                        {{ item.title }}
-                    </router-link>
-                </li>
-            </template>
+            <li v-for="item in navigationItems" :key="item.title">
+                <router-link
+                    class="block relative text-white after:block after:absolute after:content-[''] after:bg-white after:w-0 after:h-[2px] after:transition-[width] after:ease-in-out after:delay-150 hover:after:w-full"
+                    active-class="active" :aria-label="item.title" :to="item.to">
+                    {{ item.title }}
+                </router-link>
+            </li>
         </ul>
     </nav>
     <!-- <nav aria-label="Mobile navigation">

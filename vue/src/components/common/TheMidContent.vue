@@ -25,7 +25,8 @@ onBeforeMount(async () => {
         <div class="relative padded-container py-10">
             <div class="grid md:grid-cols-2 gap-14 items-center">
                 <div>
-                    <h2 v-if="midContent?.heading" class="text-4xl font-light mb-12">{{ midContent.heading }}</h2>
+                    <h2 v-if="midContent?.heading" class="text-4xl text-center md:text-left font-light mb-12">{{
+                        midContent.heading }}</h2>
                     <Markdown v-if="midContent?.longDescription" :source="midContent.longDescription"
                         class="parsed-content leading-6 text-left max-w-2xl" />
                 </div>
@@ -85,7 +86,7 @@ onBeforeMount(async () => {
     p,
     pre,
     li {
-        margin-block-end: 1rem;
+        margin-block-end: 0.5rem;
     }
 
     ul,
