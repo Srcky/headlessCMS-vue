@@ -4,15 +4,15 @@ import { IntroHeading } from '@/types';
 import { apiService } from '@/api/apiServices';
 
 const props = defineProps<{
-    id: number;
+    id: string;
 }>();
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const introText: Ref<IntroHeading | undefined> = ref();
 
 onBeforeMount(async () => {
     try {
-        const introTextRes = await apiService.getIntroText(props.id);
-        introText.value = introTextRes.data.attributes.pageIntro;
+        const introTextRes: any = await apiService.getIntroText(props.id);
+        introText.value = introTextRes.attributes.pageIntro;
     } catch (error) {
         console.log(error);
     }

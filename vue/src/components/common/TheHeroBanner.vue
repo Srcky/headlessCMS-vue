@@ -1,22 +1,20 @@
 <script setup lang="ts">
-import { inject } from 'vue';
-import type { Ref } from 'vue';
-import { onMounted, ref } from 'vue';
+import { inject, onBeforeMount, ref, Ref } from 'vue';
 import { MediaContent } from '@/types';
 import { apiService } from '@/api/apiServices';
 
 const props = defineProps<{
-    id: number;
+    id: string;
 }>();
 
 const headerHeightValue: Ref<Record<string, Number>> | undefined = inject('headerHeightValue');
 const baseUrl = import.meta.env.VITE_BASE_URL;
 const heroBanner: Ref<MediaContent | null> = ref(null);
 
-onMounted(async () => {
-    const heroBannerRes = await apiService.getHeroBanner(props.id);
+onBeforeMount(async () => {
     try {
-        heroBanner.value = heroBannerRes.data.attributes.heroBanner;
+        const heroBannerRes: any = await apiService.getHeroBanner(props.id);
+        heroBanner.value = heroBannerRes?.attributes?.heroBanner;
     } catch (error) {
         console.log(error);
     }

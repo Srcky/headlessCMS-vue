@@ -7,7 +7,9 @@ import { useRoute } from 'vue-router';
 import ThePopularCctv from '@/components/common/ThePopularCctv.vue';
 
 const route = useRoute();
-const pageId = Number(route.meta.pageId);
+const pageId = route.name?.toString()!;
+const category = route.meta.category as string;
+const imageGroup = route.meta.imageGroup as string;
 
 </script>
 
@@ -21,7 +23,7 @@ const pageId = Number(route.meta.pageId);
     </WaveSection>
     <section class="relative padded-container py-10">
         <h2 class="text-4xl text-center font-light mt-6 mb-16">Najpopularniji proizvodi</h2>
-        <ThePopularCctv />
+        <ThePopularCctv :categoryName="category" :image-group="imageGroup" />
     </section>
 </template>
 

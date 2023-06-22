@@ -5,40 +5,61 @@ interface ApiResponse<T> {
 }
 
 export const apiService = {
-  async getHeroBanner<T>(id: number): Promise<ApiResponse<T>> {
+  async getHeroBanner<T>(id: string): Promise<ApiResponse<T>> {
     const result = await fetch(
-      `${apiUrl}/hero-banners/${id}?populate=*&populate=heroBanner.media`
+      `${apiUrl}/hero-banners?populate=*&populate=heroBanner.media`
     );
-    return await result.json();
+    const heroBannerResponse: ApiResponse<T> = await result.json();
+    const heroBannerResult = await heroBannerResponse.data.filter(
+      (result: any) => result?.attributes?.uid === id
+    )[0];
+    return await heroBannerResult;
   },
-  async getIntroText<T>(id: number): Promise<ApiResponse<T>> {
+
+  async getIntroText<T>(id: string): Promise<ApiResponse<T>> {
     const result = await fetch(
-      `${apiUrl}/page-intros/${id}?populate=*&populate=pageIntro.backgroundImage`
+      `${apiUrl}/page-intros?populate=*&populate=pageIntro.backgroundImage`
     );
-    return await result.json();
+    const introTextResponse: ApiResponse<T> = await result.json();
+    const introTextResult = await introTextResponse.data.filter(
+      (result: any) => result?.attributes?.uid === id
+    )[0];
+    return await introTextResult;
   },
-  async getMidContent<T>(id: number): Promise<ApiResponse<T>> {
+
+  async getMidContent<T>(id: string): Promise<ApiResponse<T>> {
     const result = await fetch(
-      `${apiUrl}/page-mid-contents/${id}?populate=*&populate=pageMidContent.backgroundImage`
+      `${apiUrl}/page-mid-contents?populate=*&populate=pageMidContent.backgroundImage`
     );
-    return await result.json();
+    const midContentResponse: ApiResponse<T> = await result.json();
+    const midContentResult = await midContentResponse.data.filter(
+      (result: any) => result?.attributes?.uid === id
+    )[0];
+    return await midContentResult;
   },
+
   async getFeatures<T>(): Promise<ApiResponse<T>> {
     const result = await fetch(`${apiUrl}/feature-items?populate=*`);
     return await result.json();
   },
-  async getCctvItems<T>(): Promise<ApiResponse<T>> {
+
+  async getProductItems<T>(
+    category: string,
+    imageGroup: string
+  ): Promise<ApiResponse<T>> {
     const result = await fetch(
-      `${apiUrl}/cctv-equipment?populate=*&populate=cctvItems.image`
+      `${apiUrl}/${category}?populate=*&populate=${imageGroup}.image`
     );
     return await result.json();
   },
+
   async getSlides<T>(): Promise<ApiResponse<T>> {
     const result = await fetch(
       `${apiUrl}/home-page-slide?populate=slide.media`
     );
     return await result.json();
   },
+
   async getAntiSpam<T>(): Promise<ApiResponse<T>> {
     const result = await fetch(`${apiUrl}/anti-spam-protection?populate=*`);
     return await result.json();

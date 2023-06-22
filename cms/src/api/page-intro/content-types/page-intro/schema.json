@@ -16,6 +16,9 @@
       "type": "component",
       "repeatable": false,
       "component": "page-intro.page-intro-content"
+    },
+    "uid": {
+      "type": "uid"
     }
   }
 }

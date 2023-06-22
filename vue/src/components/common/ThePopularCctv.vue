@@ -5,13 +5,17 @@ import { PopularProductItem } from '@/types';
 import { apiService } from '@/api/apiServices';
 import PopularItem from '@/components/PopularItem.vue';
 
+const props = defineProps<{
+    categoryName: string,
+    imageGroup: string,
+}>();
 const popularCctvItems: Ref<PopularProductItem[]> = ref([]);
 
 onBeforeMount(async () => {
     try {
-        const popularCctv = await apiService.getCctvItems();
+        const popularCctv = await apiService.getProductItems(props.categoryName, props.imageGroup);
         if (popularCctv.data) {
-            popularCctvItems.value = [...popularCctv.data.attributes.cctvItems];
+            popularCctvItems.value = [...popularCctv.data.attributes.cctvEquipment];
         }
     } catch (error) {
         console.log(error);

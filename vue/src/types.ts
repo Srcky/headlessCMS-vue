@@ -5,6 +5,7 @@ export interface FeatureItem {
 }
 
 export interface PopularProductItem {
+  uid: string;
   image?: any;
   title?: string;
   description?: string;
@@ -12,6 +13,7 @@ export interface PopularProductItem {
 }
 
 export interface MediaContent {
+  uid: string;
   heading?: string;
   description?: string;
   textColor?: string;
@@ -21,6 +23,7 @@ export interface MediaContent {
   media: any;
 }
 export interface IntroHeading {
+  uid: string;
   heading?: string;
   description?: string;
   longDescription?: string;

@@ -1,18 +1,17 @@
 {
   "kind": "singleType",
-  "collectionName": "cctv_equipments",
+  "collectionName": "alarm_equipments",
   "info": {
-    "singularName": "cctv-equipment",
-    "pluralName": "cctv-equipments",
-    "displayName": "CCTV Equipment",
-    "description": ""
+    "singularName": "alarm-equipment",
+    "pluralName": "alarm-equipments",
+    "displayName": "Alarm Equipment"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "cctvEquipment": {
+    "alarmEquipment": {
       "type": "component",
       "repeatable": true,
       "component": "item-details.item-details-content"

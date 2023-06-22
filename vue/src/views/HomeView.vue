@@ -5,7 +5,7 @@ import Recommended from '@/components/common/TheRecommended.vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const pageId = Number(route.meta.pageId);
+const pageId = route.name?.toString()!;
 </script>
 
 <template>

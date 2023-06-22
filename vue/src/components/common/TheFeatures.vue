@@ -7,7 +7,7 @@ import type { Ref } from 'vue';
 import TheIntro from './TheIntro.vue';
 
 const props = defineProps<{
-    id: number;
+    id: string;
 }>();
 
 const featureItems: Ref<FeatureItem[]> = ref([]);
