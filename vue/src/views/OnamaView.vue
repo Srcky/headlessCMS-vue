@@ -1,17 +1,16 @@
 <script setup lang="ts">
+import HeroBanner from '@/components/common/TheHeroBanner.vue';
+import TheIntro from '@/components/common/TheIntro.vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const pageId = route.name as string;
+const category = route.meta.category as string;
+const imageGroup = route.meta.imageGroup as string;
 </script>
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <HeroBanner :id="pageId" />
+  <section class="relative padded-container py-10 flex flex-col items-center text-center">
+    <TheIntro :id="pageId" />
+  </section>
 </template>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
