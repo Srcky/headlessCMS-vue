@@ -60,6 +60,27 @@ export const apiService = {
     return await result.json();
   },
 
+  async sendMessage<T>(
+    subject: string,
+    email: string,
+    message: string
+  ): Promise<ApiResponse<T>> {
+    const request = await fetch(`${apiUrl}/contact-forms`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          subject,
+          email,
+          message,
+        },
+      }),
+    });
+    return await request.json();
+  },
+
   async getAntiSpam<T>(): Promise<ApiResponse<T>> {
     const result = await fetch(`${apiUrl}/anti-spam-protection?populate=*`);
     return await result.json();

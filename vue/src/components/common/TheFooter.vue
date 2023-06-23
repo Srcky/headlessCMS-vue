@@ -1,32 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { apiService } from '@/api/apiServices';
 import { navigationItems } from '@/util/navigationItems';
-
-
-const submitted = ref(false);
-const FORM_ENDPOINT = '';
-const antiSpam = ref([]);
-const answer = ref();
-const questionRandomizer = ref();
-
-const handleSubmit = () => {
-    if (Number(answer.value.value) === questionRandomizer.value.a) {
-        console.log('Tacno');
-        // submitted.value = true;
-    } else {
-        console.log(questionRandomizer.value.a);
-    }
-};
-
-onMounted(async () => {
-    const antiSpamRes = await apiService.getAntiSpam();
-    const questions = antiSpamRes.data.attributes.antiSpam.questions;
-    questions.forEach((element: never) => {
-        antiSpam.value.push(element);
-    });
-    questionRandomizer.value = antiSpam.value[Math.floor(Math.random() * questions.length)];
-});
+import ContactForm from '@/components/ContactForm.vue';
 
 </script>
 <template>
@@ -58,42 +32,7 @@ onMounted(async () => {
                     </ul>
                 </div>
                 <div class="text-white">
-                    <h3 class="mb-6 font-semibold">Pišite nam</h3>
-                    <div v-if="submitted" class="text-white">
-                        <h2 class="text-2xl">Hvala Vam!</h2>
-                        <div class="text-md">Kontaktiraćemo Vas uskoro.</div>
-                    </div>
-                    <form v-else :action="FORM_ENDPOINT" @submit.prevent="handleSubmit" method="POST" target="_blank">
-                        <div class="mb-3 pt-0">
-                            <input type="text" placeholder="Vaše ime" name="name"
-                                class="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
-                                required />
-                        </div>
-
-                        <div class="mb-3 pt-0">
-                            <input type="email" placeholder="Email" name="email"
-                                class="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
-                                required />
-                        </div>
-
-                        <div class="mb-3 pt-0">
-                            <textarea placeholder="Vaša poruka" name="message" rows="4"
-                                class="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
-                                required />
-                        </div>
-                        <div class="question text-white mb-4">
-                            <label for="securityQuestion">
-                                Anti-bot zaštita: {{ questionRandomizer?.q }} (upisati broj)
-                                <input type="number" name="securityQuestion" ref="answer"
-                                    class="mt-2 px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full">
-                            </label>
-                        </div>
-                        <div class="mb-3 pt-0 text-right">
-                            <button class="outline outline-1 outline-white text-white p-2 rounded w-[10rem]" type="submit">
-                                Pošalji
-                            </button>
-                        </div>
-                    </form>
+                    <ContactForm />
                 </div>
             </div>
         </div>
