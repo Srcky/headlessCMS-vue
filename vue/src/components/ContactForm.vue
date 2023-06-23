@@ -1,23 +1,28 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { Ref, onMounted, ref } from 'vue';
 import { apiService } from '@/api/apiServices';
 
-const submitted = ref(false);
-const success = ref(false);
-const loading = ref(false);
-const antiSpam = ref([]);
-const answer = ref();
-const questionRandomizer = ref();
+const submitted = <Ref>ref(false);
+const success = <Ref>ref(false);
+const loading = <Ref>ref(false);
+const antiSpam = <Ref>ref([]);
+const answer = <Ref>ref();
+const questionRandomizer = <Ref>ref();
 
-const subject = ref();
-const email = ref();
-const message = ref();
-const patience = ref();
-const calculus = ref(true);
-let questions;
+const subject = <Ref>ref('');
+const email = <Ref>ref('');
+const message = <Ref>ref('');
+const patience = <Ref>ref(false);
+const calculus = <Ref>ref(true);
+const emailValid = <Ref>ref(true);
+const emailPattern = /^[^@\s]+@[^@\s\.]+\.[^@\.\s]+$/;
+let questions = [];
 
 const handleSubmit = async () => {
-    if (Number(answer.value.value) === questionRandomizer.value.a) {
+    calculus.value = Number(answer.value) === questionRandomizer.value.a;
+    emailValid.value = emailPattern.test(email.value);
+
+    if (calculus.value && emailValid.value) {
         loading.value = true;
         try {
             setTimeout(() => {
@@ -32,8 +37,6 @@ const handleSubmit = async () => {
         } finally {
             resetForm();
         }
-    } else {
-        calculus.value = false;
     }
 };
 
@@ -46,10 +49,11 @@ const resetForm = () => {
     subject.value = '';
     email.value = '';
     message.value = '';
+    answer.value = '';
     patience.value = false;
     calculus.value = true;
     antiSpamRandomizer();
-    // reseting form to initial state 4 seconds after submit 
+    // reset form to initial state 4 seconds after submit 
     setTimeout(() => {
         submitted.value = false;
         success.value = false;
@@ -59,25 +63,23 @@ const resetForm = () => {
 onMounted(async () => {
     const antiSpamRes = await apiService.getAntiSpam();
     questions = antiSpamRes.data.attributes.antiSpam.questions;
-    questions.forEach((element: never) => {
-        antiSpam.value.push(element);
-    });
+    antiSpam.value = [...questions];
     antiSpamRandomizer();
 });
-
 </script>
+
 <template>
     <h3 class="mb-6 font-semibold">Pišite nam</h3>
     <div v-if="submitted && success && !loading" class="text-white">
         <h2 class="text-2xl">Hvala Vam!</h2>
-        <div class="text-md">Vaša poruka je poslata.</div>
+        <p>Vaša poruka je poslata.</p>
     </div>
-    <div class="text-md" v-else-if="submitted && !loading && !success">
+    <div class="text-orange-300 font-semibold" v-else-if="submitted && !loading && !success">
         Došlo je do greške. Molimo proverite da li su sva polja pravilno popunjena i pokušajte ponovo.
     </div>
-    <div class="text-md" v-else-if="loading">
-        Slanje poruke... {{ patience ? 'Ovo nekad zna da potraje, dakle - strpljenja...' : '' }}
-    </div>
+    <p v-else-if="loading">
+        {{ patience ? 'Ovo nekad zna da potraje, dakle - strpljenja...' : 'Slanje poruke...' }}
+    </p>
     <form v-else @submit.prevent="handleSubmit">
         <div class="mb-3 pt-0">
             <input v-model="subject" type="text" placeholder="Tema" name="subject"
@@ -88,6 +90,7 @@ onMounted(async () => {
             <input v-model="email" type="email" placeholder="Email" name="email"
                 class="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
                 required />
+            <p class="mt-3 text-orange-300 font-semibold" v-if="!emailValid">Unesite validnu email adresu</p>
         </div>
         <div class="mb-3 pt-0">
             <textarea v-model="message" placeholder="Vaša poruka" name="message" rows="4"
@@ -97,10 +100,13 @@ onMounted(async () => {
         <div class="question text-white mb-4">
             <label for="securityQuestion">
                 Anti-bot zaštita: {{ questionRandomizer?.q }} (upisati broj)
-                <input type="number" name="securityQuestion" ref="answer"
-                    class="mt-2 px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full">
+                <input type="number" name="securityQuestion" v-model="answer"
+                    class="mt-2 px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+                    required>
             </label>
-            <div class="mt-3" v-if="!calculus">Nije se pazilo na časovima matematike! Molimo upišite tačan rezultat.</div>
+            <p class="mt-3 text-orange-300 font-semibold" v-if="!calculus">Nije se pazilo na časovima
+                matematike! Molimo
+                upišite tačan rezultat.</p>
         </div>
         <div class="mb-3 pt-0 text-right">
             <button class="outline outline-1 outline-white text-white p-2 rounded w-[10rem]" type="submit">
