@@ -2,7 +2,6 @@ module.exports = {
   async afterCreate(evt) {
     const { result } = evt;
     try {
-      console.log(result);
       await strapi
         .plugin("email")
         .service("email")
@@ -13,7 +12,7 @@ module.exports = {
           text: result.message,
         });
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   },
 };

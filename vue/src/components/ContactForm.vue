@@ -12,12 +12,17 @@ const questionRandomizer = ref();
 const subject = ref();
 const email = ref();
 const message = ref();
-
+const patience = ref();
+const calculus = ref(true);
+let questions;
 
 const handleSubmit = async () => {
     if (Number(answer.value.value) === questionRandomizer.value.a) {
         loading.value = true;
         try {
+            setTimeout(() => {
+                patience.value = true;
+            }, 5000);
             await apiService.sendMessage(subject.value, email.value, message.value);
             submitted.value = true;
             success.value = true;
@@ -25,20 +30,39 @@ const handleSubmit = async () => {
             success.value = false;
             console.log(error);
         } finally {
-            loading.value = false;
+            resetForm();
         }
     } else {
-        console.log(questionRandomizer.value.a);
+        calculus.value = false;
     }
+};
+
+const antiSpamRandomizer = () => {
+    questionRandomizer.value = antiSpam.value[Math.floor(Math.random() * questions.length)];
+};
+
+const resetForm = () => {
+    loading.value = false;
+    subject.value = '';
+    email.value = '';
+    message.value = '';
+    patience.value = false;
+    calculus.value = true;
+    antiSpamRandomizer();
+    // reseting form to initial state 4 seconds after submit 
+    setTimeout(() => {
+        submitted.value = false;
+        success.value = false;
+    }, 4000);
 };
 
 onMounted(async () => {
     const antiSpamRes = await apiService.getAntiSpam();
-    const questions = antiSpamRes.data.attributes.antiSpam.questions;
+    questions = antiSpamRes.data.attributes.antiSpam.questions;
     questions.forEach((element: never) => {
         antiSpam.value.push(element);
     });
-    questionRandomizer.value = antiSpam.value[Math.floor(Math.random() * questions.length)];
+    antiSpamRandomizer();
 });
 
 </script>
@@ -52,7 +76,7 @@ onMounted(async () => {
         Došlo je do greške. Molimo proverite da li su sva polja pravilno popunjena i pokušajte ponovo.
     </div>
     <div class="text-md" v-else-if="loading">
-        Slanje poruke...
+        Slanje poruke... {{ patience ? 'Ovo nekad zna da potraje, dakle - strpljenja...' : '' }}
     </div>
     <form v-else @submit.prevent="handleSubmit">
         <div class="mb-3 pt-0">
@@ -76,6 +100,7 @@ onMounted(async () => {
                 <input type="number" name="securityQuestion" ref="answer"
                     class="mt-2 px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full">
             </label>
+            <div class="mt-3" v-if="!calculus">Nije se pazilo na časovima matematike! Molimo upišite tačan rezultat.</div>
         </div>
         <div class="mb-3 pt-0 text-right">
             <button class="outline outline-1 outline-white text-white p-2 rounded w-[10rem]" type="submit">
