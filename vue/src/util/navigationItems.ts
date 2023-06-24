@@ -1,32 +1,32 @@
 export const navigationItems = [
   {
     title: 'Početna',
-    iconClass: 'comments',
+    iconClass: 'home',
     to: { name: 'home' },
   },
   {
     title: 'Video nadzor',
-    iconClass: 'comments',
+    iconClass: 'videocam',
     to: { name: 'videoNadzor' },
   },
   {
     title: 'Alarmi',
-    iconClass: 'comment',
+    iconClass: 'keyboard',
     to: { name: 'alarmi' },
   },
   {
     title: 'Fiskalne kase',
-    iconClass: 'chart-bar',
+    iconClass: 'print',
     to: { name: 'fiskalneKase' },
   },
   {
     title: 'Računari i oprema',
-    iconClass: 'comments',
+    iconClass: 'laptop',
     to: { name: 'racunariOprema' },
   },
   {
     title: 'O nama',
-    iconClass: 'comments',
+    iconClass: 'groups',
     to: { name: 'oNama' },
   },
 ];

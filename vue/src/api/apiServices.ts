@@ -85,4 +85,9 @@ export const apiService = {
     const result = await fetch(`${apiUrl}/anti-spam-protection?populate=*`);
     return await result.json();
   },
+
+  async getShopInfo<T>(): Promise<ApiResponse<T>> {
+    const result = await fetch(`${apiUrl}/shop-info?populate=*`);
+    return await result.json();
+  },
 };

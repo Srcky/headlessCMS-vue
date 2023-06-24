@@ -1,6 +1,21 @@
 <script setup lang="ts">
+import { Ref, onBeforeMount, ref } from 'vue';
 import { navigationItems } from '@/util/navigationItems';
 import ContactForm from '@/components/ContactForm.vue';
+import { apiService } from '@/api/apiServices';
+import Markdown from 'vue3-markdown-it';
+
+
+const shopInfo: Ref<any> = ref();
+
+onBeforeMount(async () => {
+    try {
+        const shopInfoRes: any = await apiService.getShopInfo();
+        shopInfo.value = shopInfoRes.data.attributes.shopInfo;
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 </script>
 <template>
@@ -12,11 +27,8 @@ import ContactForm from '@/components/ContactForm.vue';
                         <img src="@/assets/images/mb-electronic-logo.svg" alt="MB electronic logo"
                             class="w-full max-w-[10rem]" />
                     </router-link>
-                    <dl class="mt-4 text-sm" aria-label="Address">
-                        <dt><strong>Aranđelovac</strong></dt>
-                        <dd>Kralja petra I bb</dd>
-                        <dt>tel: +381 34 701 235</dt>
-                    </dl>
+                    <Markdown v-if="shopInfo" class="parsed-content mt-4 text-sm" aria-label="Address" :source="shopInfo" />
+
                 </div>
                 <div class="text-white">
                     <h3 class="font-semibold">Glavni linkovi</h3>

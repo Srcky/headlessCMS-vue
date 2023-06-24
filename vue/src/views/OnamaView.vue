@@ -10,7 +10,7 @@ const imageGroup = route.meta.imageGroup as string;
 </script>
 <template>
   <HeroBanner :id="pageId" />
-  <section class="relative padded-container py-10 flex flex-col items-center text-center">
+  <section class="relative padded-container py-10 flex flex-col items-center">
     <TheIntro :id="pageId" />
   </section>
 </template>
