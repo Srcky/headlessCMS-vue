@@ -74,7 +74,7 @@ onMounted(async () => {
         <h2 class="text-2xl">Hvala Vam!</h2>
         <p>Vaša poruka je poslata.</p>
     </div>
-    <div class="text-orange-300 font-semibold" v-else-if="submitted && !loading && !success">
+    <div class="text-orange-300" v-else-if="submitted && !loading && !success">
         Došlo je do greške. Molimo proverite da li su sva polja pravilno popunjena i pokušajte ponovo.
     </div>
     <p v-else-if="loading">
@@ -90,7 +90,7 @@ onMounted(async () => {
             <input v-model="email" type="email" placeholder="Email" name="email"
                 class="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
                 required />
-            <p class="mt-3 text-orange-300 font-semibold" v-if="!emailValid">Unesite validnu email adresu</p>
+            <p class="mt-3 text-orange-300" v-if="!emailValid">Unesite validnu email adresu</p>
         </div>
         <div class="mb-3 pt-0">
             <textarea v-model="message" placeholder="Vaša poruka" name="message" rows="4"
@@ -104,7 +104,7 @@ onMounted(async () => {
                     class="mt-2 px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
                     required>
             </label>
-            <p class="mt-3 text-orange-300 font-semibold" v-if="!calculus">Nije se pazilo na časovima
+            <p class="mt-3 text-orange-300" v-if="!calculus">Nije se pazilo na časovima
                 matematike! Molimo
                 upišite tačan rezultat.</p>
         </div>

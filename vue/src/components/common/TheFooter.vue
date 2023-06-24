@@ -7,6 +7,7 @@ import Markdown from 'vue3-markdown-it';
 
 
 const shopInfo: Ref<any> = ref();
+const currentYear = new Date().getFullYear();
 
 onBeforeMount(async () => {
     try {
@@ -21,7 +22,7 @@ onBeforeMount(async () => {
 <template>
     <footer class="bg-white pt-40 bg-[url('@/assets/images/footer-background.svg')] bg-cover">
         <div class="padded-container">
-            <div class="grid w-full sm:grid-cols-3 gap-14 sm:gap-10 pb-20 pt-16">
+            <div class="grid w-full sm:grid-cols-3 gap-14 sm:gap-10 pb-16 pt-16">
                 <div class="text-white">
                     <router-link to="/" class="w-40">
                         <img src="@/assets/images/mb-electronic-logo.svg" alt="MB electronic logo"
@@ -30,7 +31,7 @@ onBeforeMount(async () => {
                     <Markdown v-if="shopInfo" class="parsed-content mt-4 text-sm" aria-label="Address" :source="shopInfo" />
 
                 </div>
-                <div class="text-white">
+                <div class="text-white hidden sm:block">
                     <h3 class="font-semibold">Glavni linkovi</h3>
                     <ul class="mt-6 space-y-4 text-sm" aria-label="Footer navigation">
                         <li v-for="item in navigationItems" :key="item.title">
@@ -46,6 +47,10 @@ onBeforeMount(async () => {
                 <div class="text-white">
                     <ContactForm />
                 </div>
+            </div>
+            <div class="text-sm text-white text-center mb-6">&copy; {{ currentYear }} MB electronic. Sva prava su
+                zadržana. By
+                <strong>Damiao</strong>.
             </div>
         </div>
     </footer>
