@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "pos_equipments",
+  "info": {
+    "singularName": "pos-equipment",
+    "pluralName": "pos-equipments",
+    "displayName": "POS Equipment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "posEquipment": {
+      "type": "component",
+      "repeatable": true,
+      "component": "item-details.item-details-content"
+    }
+  }
+}

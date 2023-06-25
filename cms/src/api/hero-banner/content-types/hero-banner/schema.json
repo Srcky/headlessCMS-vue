@@ -16,6 +16,10 @@
       "type": "component",
       "repeatable": false,
       "component": "media-content.carousel-slide"
+    },
+    "uid": {
+      "type": "uid",
+      "required": true
     }
   }
 }

@@ -1,82 +1,56 @@
 <script setup lang="ts">
-import { defineComponent } from '@vue/runtime-core';
-import { onMounted, computed, ref } from 'vue';
-import type { Ref } from 'vue';
+import { navigationItems } from '@/util/navigationItems';
+import { ref, Ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
-const showMobileMenu = ref(false);
+const props = defineProps<{
+    headerHeight: number | undefined;
+}>();
 
-const toggleNav = () => (showMobileMenu.value = !showMobileMenu.value);
-const closeNav = () => (showMobileMenu.value = false);
-const navigationItems = [
-    {
-        title: 'Početna',
-        iconClass: 'comments',
-        to: { name: 'home' },
-    },
-    {
-        title: 'Video Nadzor',
-        iconClass: 'comments',
-        to: { name: 'videoNadzor' },
-    },
-    {
-        title: 'Alarmi',
-        iconClass: 'comment',
-        to: { name: 'alarmi' },
-    },
-    {
-        title: 'Fiskalne kase',
-        iconClass: 'chart-bar',
-        to: { name: 'fiskalneKase' },
-    },
-    {
-        title: 'Računari i oprema',
-        iconClass: 'comments',
-        to: { name: 'racunariOprema' },
-    },
-    {
-        title: 'O nama',
-        iconClass: 'comments',
-        to: { name: 'oNama' },
-    },
-];
+const route = useRoute();
+const navOpen: Ref = ref(false);
+
+const toggleNav = () => {
+    navOpen.value = !navOpen.value;
+};
+
+// Ensuring no scroling is possible when mobile menu is opened
+watch(navOpen, (newNavOpen) => {
+    const bodyElement = document.body;
+    if (newNavOpen) {
+        bodyElement.classList.add('overflow-hidden');
+    } else {
+        bodyElement.classList.remove('overflow-hidden');
+    }
+});
+
+// Closing navigation after route changes
+watch(route, (newPage) => {
+    if (newPage.path) {
+        navOpen.value = false;
+    }
+});
+
 
 </script>
 <template>
-    <nav class="hidden md:block" aria-label="Primary navigation">
-        <ul class="flex flex-wrap justify-center gap-7">
-            <template v-for="item in navigationItems" :key="item.title">
-                <li>
-                    <router-link
-                        class="block relative text-white after:block after:absolute after:content-[''] after:bg-white after:w-0 after:h-[2px] after:transition-[width] after:ease-in-out after:delay-150 hover:after:w-full"
-                        active-class="active" :aria-label="item.title" :to="item.to">
-                        {{ item.title }}
-                    </router-link>
-                </li>
-            </template>
+    <span class="material-icons-outlined absolute left-4 text-white top-1/2 z-40 -translate-y-1/2 md:hidden"
+        @click="toggleNav">
+        {{ navOpen ? 'close' : 'menu' }}
+    </span>
+    <nav class="fixed h-screen w-[90vw] top-0 pt-20 pl-4 left-0 -translate-x-full transition-transform duration-300 ease-in bg-blue-600 md:pt-0 md:pl-0 md:relative md:h-auto md:w-auto md:bg-inherit md:translate-x-0"
+        :class="{ 'translate-x-0': navOpen }" aria-label="Primary navigation">
+        <ul class="flex flex-wrap justify-center gap-7 flex-col md:flex-row">
+            <li v-for="item in navigationItems" :key="item.title">
+                <router-link
+                    class="flex relative text-white md:after:block md:after:absolute md:after:bottom-0 md:after:content-[''] md:after:bg-white md:after:w-0 md:after:h-[2px] md:after:transition-[width] md:after:ease-in-out md:after:delay-150 md:hover:after:w-full"
+                    active-class="active" :aria-label="item.title" :to="item.to">
+                    <span class="material-icons-outlined text-white mr-4 md:hidden">{{ item.iconClass }}</span>
+                    {{ item.title }}
+                </router-link>
+            </li>
         </ul>
     </nav>
-    <!-- <nav aria-label="Mobile navigation">
-        <div
-            class="fixed md:hidden bottom-[1rem] right-[2rem] z-40 highlight-color-none drop-shadow-[3px_3px_5px_#00000082]">
-            <button v-click-outside="closeNav" class="rounded-full w-16 h-16 bg-msg-red-500 z-50 relative"
-                @click="toggleNav">
-                <img src="@/assets/mb-electronic-logo.svg" alt="logo" :class="{ '-rotate-[25deg]': showMobileMenu }"
-                    class="w-12 brightness-0 invert p-3 ml-2 z-50 transition duration-500" />
-            </button>
-            <transition name="slide-fade">
-                <ul v-if="showMobileMenu"
-                    class="transform absolute bg-msg-red-500 text-left py-3 px-6 bottom-[2.6rem] rounded-xl transition right-[2.6rem] rounded-br-none">
-                    <template v-for="item in navigationItems" :key="item.title">
-                        <li class="font-semibold py-2">
-                            <router-link :to="item.to" class="text-white" :aria-label="item.title">{{ item.title }}
-                            </router-link>
-                        </li>
-                    </template>
-                </ul>
-            </transition>
-        </div>
-    </nav> -->
 </template>
 <style lang="scss" scoped>
 .active::after {

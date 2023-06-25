@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "computer_equipments",
+  "info": {
+    "singularName": "computer-equipment",
+    "pluralName": "computer-equipments",
+    "displayName": "Computer Equipment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "computerEquipment": {
+      "type": "component",
+      "repeatable": true,
+      "component": "item-details.item-details-content"
+    }
+  }
+}

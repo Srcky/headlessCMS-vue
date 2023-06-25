@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "shop_infos",
+  "info": {
+    "singularName": "shop-info",
+    "pluralName": "shop-infos",
+    "displayName": "Shop Info",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "shopInfo": {
+      "type": "richtext"
+    }
+  }
+}

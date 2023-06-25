@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "alarm_equipments",
+  "info": {
+    "singularName": "alarm-equipment",
+    "pluralName": "alarm-equipments",
+    "displayName": "Alarm Equipment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "alarmEquipment": {
+      "type": "component",
+      "repeatable": true,
+      "component": "item-details.item-details-content"
+    }
+  }
+}
