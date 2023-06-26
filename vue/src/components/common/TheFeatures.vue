@@ -6,7 +6,7 @@ import { onMounted, ref } from 'vue';
 import type { Ref } from 'vue';
 import TheIntro from './TheIntro.vue';
 
-const props = defineProps<{
+defineProps<{
     id: string;
 }>();
 
@@ -30,7 +30,7 @@ onMounted(async () => {
 <template>
     <section>
         <div class="relative padded-container py-10 flex flex-col items-center text-center">
-            <TheIntro :id="props.id" />
+            <TheIntro :id="id" />
             <ul class="flex my-16 gap-x-8 gap-y-14 flex-wrap justify-center">
                 <Feature v-for="item in featureItems" :image="item.image" :heading="item.heading"
                     :description="item.description" />

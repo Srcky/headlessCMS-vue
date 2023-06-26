@@ -26,6 +26,6 @@ onBeforeMount(async () => {
 <template>
     <ul v-if="popularProductsItems.length > 0" class="grid md:grid-cols-2 lg:grid-cols-3 gap-14 my-16">
         <PopularItem v-for="item in popularProductsItems" :image="item.image" :title="item.title"
-            :description="item.description" :button="item.button" />
+            :description="item.description" :price="item.price" />
     </ul>
 </template>
