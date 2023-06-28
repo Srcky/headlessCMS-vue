@@ -4,10 +4,4 @@ module.exports = ({ env }) => ({
   app: {
     keys: env.array("APP_KEYS"),
   },
-  mime: {
-    types: {
-      html: "text/html",
-      css: "text/css",
-    },
-  },
 });
