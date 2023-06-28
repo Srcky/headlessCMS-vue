@@ -15,4 +15,7 @@ export default defineConfig({
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
   },
+  build: {
+    target: 'esnext',
+  },
 });

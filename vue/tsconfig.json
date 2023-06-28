@@ -9,7 +9,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "target": "es2020",
+    "target": "esnext",
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
