@@ -11,8 +11,8 @@ module.exports = ({ env }) => ({
         },
       },
       settings: {
-        defaultFrom: "site@mbelectronic.rs",
-        defaultReplyTo: "site@mbelectronic.rs",
+        defaultFrom: "office@mbelectronic.rs",
+        defaultReplyTo: "office@mbelectronic.rs",
       },
     },
   },

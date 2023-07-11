@@ -5,6 +5,7 @@ import VideoNadzorView from '@/views/VideoNadzorView.vue';
 import FiskalneKaseView from '@/views/FiskalneKaseView.vue';
 import RacunariOpremaView from '@/views/RacunariOpremaView.vue';
 import OnamaView from '@/views/OnamaView.vue';
+import NotFound from '@/views/NotFoundView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -55,9 +56,10 @@ const router = createRouter({
       name: 'oNama',
       component: OnamaView,
     },
+    { path: '/:notFound(.*)', name: 'notFound', component: NotFound },
   ],
   scrollBehavior(to, from, savedPosition) {
-    return { top: 0 };
+    return { left: 0, top: 0 };
   },
 });
 

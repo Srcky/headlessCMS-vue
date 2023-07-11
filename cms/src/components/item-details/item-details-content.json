@@ -20,7 +20,7 @@
     "description": {
       "type": "richtext"
     },
-    "button": {
+    "price": {
       "type": "string"
     }
   }

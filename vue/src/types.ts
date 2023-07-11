@@ -9,7 +9,7 @@ export interface PopularProductItem {
   image?: any;
   title?: string;
   description?: string;
-  button?: string;
+  price?: string;
 }
 
 export interface MediaContent {
