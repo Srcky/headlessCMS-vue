@@ -12,6 +12,10 @@ const imageGroup = route.meta.imageGroup as string;
 
 const mapContainer = shallowRef<HTMLElement | string>('');
 const map: any = shallowRef(null);
+const popupHTML: string = `<strong style="font-size: 14px;">MB electronic</strong>
+                          <p>Kralja Petra I bb</p>
+                          <p>+381 34 701 235</p>
+                          <p>Pon - Pet od 08h do 17h</p>`;
 
 onMounted(() => {
   const apiKey = 'nbRh6dVhky9neOhm3WU7';
@@ -37,7 +41,7 @@ onMounted(() => {
   new maplibregl.Marker({
     color: "#b30000",
     draggable: false
-  }).setLngLat([20.565043492991194, 44.3035952793808]).setPopup(new maplibregl.Popup({ closeButton: false }).setHTML('<strong style="font-size: 14px;">MB electronic</strong><p>Kralja Petra I bb</p><p>+381 34 701 235</p><p>Pon - Pet od 08h do 17h</p>').setMaxWidth("300px")).addTo(map.value);
+  }).setLngLat([20.565043492991194, 44.3035952793808]).setPopup(new maplibregl.Popup({ closeButton: false }).setHTML(popupHTML).setMaxWidth("300px")).addTo(map.value);
 
 });
 
