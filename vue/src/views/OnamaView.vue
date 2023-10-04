@@ -56,17 +56,11 @@ onUnmounted(() => {
     <TheIntro :id="pageId" />
   </section>
   <div class="map-wrap w-full h-[60dvh]">
-    <div class="map" ref="mapContainer"></div>
+    <div class="map mx-auto w-full h-full" ref="mapContainer"></div>
   </div>
 </template>
 
 
 <style lang="scss">
 @import 'maplibre-gl/dist/maplibre-gl.css';
-
-.map {
-  margin: 0 auto;
-  width: 90%;
-  height: 100%;
-}
 </style>
