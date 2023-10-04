@@ -41,9 +41,9 @@ watch(route, (newPage) => {
     <nav class="fixed h-screen w-[90vw] top-0 pt-20 pl-4 left-0 -translate-x-full transition-transform duration-300 ease-in bg-blue-600 md:pt-0 md:pl-0 md:relative md:h-auto md:w-auto md:bg-inherit md:translate-x-0"
         :class="{ 'translate-x-0': navOpen }" aria-label="Primary navigation">
         <ul class="flex flex-wrap justify-center gap-7 flex-col md:flex-row">
-            <li v-for="item in navigationItems" :key="item.title">
+            <li v-for="item in navigationItems" :key="item.title" class="flex">
                 <router-link
-                    class="flex relative text-white md:after:block md:after:absolute md:after:bottom-0 md:after:content-[''] md:after:bg-white md:after:w-0 md:after:h-[2px] md:after:transition-[width] md:after:ease-in-out md:after:delay-150 md:hover:after:w-full"
+                    class="flex relative text-white after:block after:absolute after:bottom-0 after:content-[''] after:bg-white after:w-0 after:h-[2px] md:after:transition-[width] md:after:ease-in-out md:after:delay-150 md:hover:after:w-full"
                     active-class="active" :aria-label="item.title" :to="item.to">
                     <span class="material-icons-outlined text-white mr-4 md:hidden">{{ item.iconClass }}</span>
                     {{ item.title }}

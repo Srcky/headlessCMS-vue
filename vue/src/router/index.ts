@@ -28,6 +28,7 @@ const router = createRouter({
       path: '/alarmi',
       name: 'alarmi',
       component: AlarmiView,
+      // component: () => import('@/views/AlarmiView.vue'),
       meta: {
         category: 'alarm-equipment',
         imageGroup: 'alarmEquipment',
