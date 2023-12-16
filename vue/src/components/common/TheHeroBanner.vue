@@ -30,6 +30,10 @@ onBeforeMount(async () => {
                 <source :src="baseUrl + heroBanner?.media?.data?.attributes?.url" type="video/webm">
                 Sorry, your browser doesn't support HTML video.
             </video>
+            <!-- <template v-else-if="heroBanner?.media?.data?.attributes?.mime === 'image/svg+xml'" loop muted autoplay>
+                <source :src="baseUrl + heroBanner?.media?.data?.attributes?.url" type="video/webm">
+                Sorry, your browser doesn't support HTML video.
+            </template> -->
             <picture v-else>
                 <source :srcset="baseUrl + heroBanner?.media?.data?.attributes?.url" media="(min-width: 80rem)">
                 <source :srcset="baseUrl + heroBanner?.media?.data?.attributes?.formats?.large?.url"

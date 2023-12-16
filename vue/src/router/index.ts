@@ -5,6 +5,7 @@ import VideoNadzorView from '@/views/VideoNadzorView.vue';
 import FiskalneKaseView from '@/views/FiskalneKaseView.vue';
 import RacunariOpremaView from '@/views/RacunariOpremaView.vue';
 import OnamaView from '@/views/OnamaView.vue';
+import NotFound from '@/views/NotFoundView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,7 @@ const router = createRouter({
       path: '/alarmi',
       name: 'alarmi',
       component: AlarmiView,
+      // component: () => import('@/views/AlarmiView.vue'),
       meta: {
         category: 'alarm-equipment',
         imageGroup: 'alarmEquipment',
@@ -55,6 +57,7 @@ const router = createRouter({
       name: 'oNama',
       component: OnamaView,
     },
+    { path: '/:notFound(.*)', name: 'notFound', component: NotFound },
   ],
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 };

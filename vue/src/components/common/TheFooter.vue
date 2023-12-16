@@ -26,7 +26,7 @@ onBeforeMount(async () => {
                 <div class="text-white">
                     <router-link to="/" class="w-40">
                         <img src="@/assets/images/mb-electronic-logo.svg" alt="MB electronic logo"
-                            class="w-full max-w-[10rem]" />
+                            class="w-full h-[26px] max-w-[10rem]" />
                     </router-link>
                     <Markdown v-if="shopInfo" class="parsed-content mt-4 text-sm" aria-label="Address" :source="shopInfo" />
 
