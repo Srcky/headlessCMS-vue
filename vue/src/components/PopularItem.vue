@@ -16,7 +16,7 @@ defineProps<{
     <li class="grid content-between rounded-xl bg-white p-6 shadow-lg duration-300 border border-gray-200">
         <div class="content-wrapper">
             <div v-if="image" class="pb-6 border-b border-gray-200">
-                <img :src="baseUrl + image.data.attributes.url" :alt="title">
+                <img :src="image.data.attributes.url" :alt="title">
             </div>
             <h3 v-if="title" class="mt-6 mb-2 text-lg leading-6">{{ title }}</h3>
             <Markdown v-if="description" class="parsed-content mt-2 text-sm leading-5" :source="description" />

@@ -26,12 +26,10 @@ onBeforeMount(async () => {
     <Markdown v-if="introText?.longDescription" class="parsed-content mt-8 max-w-2xl" aria-label="Address"
         :source="introText?.longDescription" />
     <picture v-if="introText?.backgroundImage?.data">
-        <source :srcset="baseUrl + introText?.backgroundImage.data?.attributes?.url">
-        <source :srcset="baseUrl + introText?.backgroundImage.data?.attributes?.formats?.large?.url"
-            media="(min-width: 48rem)">
-        <source :srcset="baseUrl + introText?.backgroundImage.data?.attributes?.formats?.medium?.url"
-            media="(min-width: 30rem)">
-        <img :src="baseUrl + introText?.backgroundImage.data?.attributes?.formats?.small?.url" :alt="introText?.heading"
+        <source :srcset="introText?.backgroundImage.data?.attributes?.url">
+        <source :srcset="introText?.backgroundImage.data?.attributes?.formats?.large?.url" media="(min-width: 48rem)">
+        <source :srcset="introText?.backgroundImage.data?.attributes?.formats?.medium?.url" media="(min-width: 30rem)">
+        <img :src="introText?.backgroundImage.data?.attributes?.formats?.small?.url" :alt="introText?.heading"
             :width="introText?.backgroundImage.data?.attributes?.formats?.small?.width"
             :height="introText?.backgroundImage.data?.attributes?.formats?.small?.height" loading="lazy" decoding="async">
     </picture>

@@ -24,7 +24,7 @@ defineProps<{
       </router-link>
     </div>
     <div class="flex justify-center basis-full md:basis-[calc(50%-1rem)] items-center py-8">
-      <img :src="baseUrl + image" :alt="imageAlt" class="max-w-[300px]" data-splide-lazy="baseUrl + image">
+      <img :src="image" :alt="imageAlt" class="max-w-[300px]" data-splide-lazy="image">
     </div>
   </div>
 </template>

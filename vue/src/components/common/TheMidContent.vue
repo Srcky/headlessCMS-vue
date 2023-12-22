@@ -31,13 +31,12 @@ onBeforeMount(async () => {
                         class="parsed-content leading-6 text-left max-w-2xl" />
                 </div>
                 <picture v-if="midContent?.backgroundImage?.data">
-                    <source :srcset="baseUrl + midContent?.backgroundImage.data?.attributes?.url">
-                    <source :srcset="baseUrl + midContent?.backgroundImage.data?.attributes?.formats?.large?.url"
+                    <source :srcset="midContent?.backgroundImage.data?.attributes?.url">
+                    <source :srcset="midContent?.backgroundImage.data?.attributes?.formats?.large?.url"
                         media="(min-width: 48rem)">
-                    <source :srcset="baseUrl + midContent?.backgroundImage.data?.attributes?.formats?.medium?.url"
+                    <source :srcset="midContent?.backgroundImage.data?.attributes?.formats?.medium?.url"
                         media="(min-width: 30rem)">
-                    <img :src="baseUrl + midContent?.backgroundImage.data?.attributes?.formats?.small?.url"
-                        :alt="midContent?.heading"
+                    <img :src="midContent?.backgroundImage.data?.attributes?.formats?.small?.url" :alt="midContent?.heading"
                         :width="midContent?.backgroundImage.data?.attributes?.formats?.small?.width"
                         :height="midContent?.backgroundImage.data?.attributes?.formats?.small?.height" loading="lazy"
                         decoding="async">

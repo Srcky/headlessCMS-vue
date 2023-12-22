@@ -27,22 +27,19 @@ onBeforeMount(async () => {
         class="relative grid content-center h-[100vh] w-full before:block before:absolute before:content-[''] before:bg-black before:-z-10">
         <template v-if="heroBanner?.media?.data?.attributes">
             <video v-if="heroBanner?.media?.data?.attributes?.mime === 'video/webm'" loop muted autoplay>
-                <source :src="baseUrl + heroBanner?.media?.data?.attributes?.url" type="video/webm">
+                <source :src="heroBanner?.media?.data?.attributes?.url" type="video/webm">
                 Sorry, your browser doesn't support HTML video.
             </video>
             <!-- <template v-else-if="heroBanner?.media?.data?.attributes?.mime === 'image/svg+xml'" loop muted autoplay>
-                <source :src="baseUrl + heroBanner?.media?.data?.attributes?.url" type="video/webm">
+                <source :src="heroBanner?.media?.data?.attributes?.url" type="video/webm">
                 Sorry, your browser doesn't support HTML video.
             </template> -->
             <picture v-else>
-                <source :srcset="baseUrl + heroBanner?.media?.data?.attributes?.url" media="(min-width: 80rem)">
-                <source :srcset="baseUrl + heroBanner?.media?.data?.attributes?.formats?.large?.url"
-                    media="(min-width: 48rem)">
-                <source :srcset="baseUrl + heroBanner?.media?.data?.attributes?.formats?.medium?.url"
-                    media="(min-width: 30rem)">
-                <img class="h-[100dvh] object-cover"
-                    :src="baseUrl + heroBanner?.media?.data?.attributes?.formats?.small?.url" :alt="heroBanner?.heading"
-                    :width="heroBanner?.media?.data?.attributes?.formats?.small?.width"
+                <source :srcset="heroBanner?.media?.data?.attributes?.url" media="(min-width: 80rem)">
+                <source :srcset="heroBanner?.media?.data?.attributes?.formats?.large?.url" media="(min-width: 48rem)">
+                <source :srcset="heroBanner?.media?.data?.attributes?.formats?.medium?.url" media="(min-width: 30rem)">
+                <img class="h-[100dvh] object-cover" :src="heroBanner?.media?.data?.attributes?.formats?.small?.url"
+                    :alt="heroBanner?.heading" :width="heroBanner?.media?.data?.attributes?.formats?.small?.width"
                     :height="heroBanner?.media?.data?.attributes?.formats?.small?.height" loading="lazy" decoding="async">
             </picture>
         </template>
