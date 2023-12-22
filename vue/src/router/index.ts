@@ -60,7 +60,7 @@ const router = createRouter({
     { path: '/:notFound(.*)', name: 'notFound', component: NotFound },
   ],
   scrollBehavior(to, from, savedPosition) {
-    return { top: 0 };
+    return { left: 0, top: 0 };
   },
 });
 
