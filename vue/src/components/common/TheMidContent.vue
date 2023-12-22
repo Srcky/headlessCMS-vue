@@ -7,7 +7,6 @@ import { apiService } from '@/api/apiServices';
 const props = defineProps<{
     id: string;
 }>();
-const baseUrl = import.meta.env.VITE_BASE_URL;
 const midContent: Ref<IntroHeading | undefined> = ref();
 
 onBeforeMount(async () => {

@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import Markdown from 'vue3-markdown-it';
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
-
 defineProps<{
     image?: any,
     title?: string,

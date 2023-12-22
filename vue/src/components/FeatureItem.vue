@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const baseUrl = import.meta.env.VITE_BASE_URL;
 
 defineProps<{
   image?: any,

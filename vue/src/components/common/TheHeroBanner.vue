@@ -8,7 +8,6 @@ const props = defineProps<{
 }>();
 
 const headerHeightValue: Ref<Record<string, Number>> | undefined = inject('headerHeightValue');
-const baseUrl = import.meta.env.VITE_BASE_URL;
 const heroBanner: Ref<MediaContent | null> = ref(null);
 
 onBeforeMount(async () => {
