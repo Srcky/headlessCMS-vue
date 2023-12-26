@@ -37,7 +37,7 @@ onBeforeMount(async () => {
                 <source :srcset="heroBanner?.media?.data?.attributes?.url" media="(min-width: 80rem)">
                 <source :srcset="heroBanner?.media?.data?.attributes?.formats?.large?.url" media="(min-width: 48rem)">
                 <source :srcset="heroBanner?.media?.data?.attributes?.formats?.medium?.url" media="(min-width: 30rem)">
-                <img class="h-[100svh] object-cover" :src="heroBanner?.media?.data?.attributes?.formats?.small?.url"
+                <img class="h-[100vh] object-cover" :src="heroBanner?.media?.data?.attributes?.formats?.small?.url"
                     :alt="heroBanner?.heading" :width="heroBanner?.media?.data?.attributes?.formats?.small?.width"
                     :height="heroBanner?.media?.data?.attributes?.formats?.small?.height" loading="lazy" decoding="async">
             </picture>
