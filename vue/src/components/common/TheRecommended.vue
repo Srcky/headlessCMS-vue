@@ -32,7 +32,7 @@ onBeforeMount(async () => {
                 <SplideSlide v-for="(slide, index) in recommendedItems" :key="index">
                     <RecommendedItem :heading="slide.heading" :text="slide.description" :buttonText="slide.button"
                         :buttonLink="slide.buttonLink" :image="slide.media?.data?.attributes?.url"
-                        :imageAlt="slide.media?.data?.attributes?.alternativeText" />
+                        :imageAlt="slide.media?.data?.attributes?.alternativeText ? slide.media?.data?.attributes?.alternativeText : slide.heading" />
                 </SplideSlide>
             </Splide>
         </section>
